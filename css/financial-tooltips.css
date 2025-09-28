@@ -1,0 +1,141 @@
+/* Tooltip styles */
+.tooltip-container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.tooltip-icon {
+    margin-left: 0.25rem;
+    color: #64748b;
+    cursor: help;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1e293b;
+    color: white;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    width: 200px;
+    font-size: 0.75rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Financial Plan Dashboard */
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.dashboard-card {
+    background-color: white;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+}
+
+.dashboard-card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.chart-container {
+    height: 300px;
+    margin-bottom: 1rem;
+}
+
+.loan-form-section {
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.loan-form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.loan-form-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.add-loan-btn {
+    padding: 0.25rem 0.75rem;
+    background-color: #2c7be5;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.loan-item {
+    background-color: #f8fafc;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.loan-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.loan-item-title {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.loan-item-remove {
+    color: #e63757;
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+.loan-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .loan-fields {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinancialFuture - Your Personal Financial Planning Tool</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/financial-tooltips.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <h1>FinancialFuture</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#planner">Financial Planner</a></li>
+                <li><a href="investment-knowledge.html">Investment Knowledge</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            <div class="cta-button">
+                <a href="#planner" class="btn">Start Planning</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Plan Your Financial Future</h1>
+                <p>Input your financial history, set your goals, and get personalized financial plans to secure your future.</p>
+                <a href="#planner" class="btn btn-large">Create Your Plan</a>
+            </div>
+            <div class="hero-image">
+                <img src="images/financial-planning.svg" alt="Financial Planning Illustration">
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <h2>How It Works</h2>
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <i class="fas fa-history"></i>
+                    <h3>Input Your Financial History</h3>
+                    <p>Enter your income, expenses, assets, and liabilities to create a complete financial profile.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Set Your Financial Goals</h3>
+                    <p>Define short-term and long-term financial goals you want to achieve.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Get Personalized Plans</h3>
+                    <p>Receive customized financial plans based on your history and goals.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Learn About Investments</h3>
+                    <p>Access our knowledge base to learn about different investment options.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Financial Planner Section -->
+        <section id="planner" class="planner-section">
+            <h2>Your Financial Planner</h2>
+            <div class="planner-container">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="financial-history">Financial History</button>
+                    <button class="tab-btn" data-tab="financial-goals">Financial Goals</button>
+                    <button class="tab-btn" data-tab="generated-plan">Generated Plan</button>
+                </div>
+                
+                <div class="tab-content">
+                    <!-- Financial History Tab -->
+                    <div id="financial-history" class="tab-pane active">
+                        <h3>Enter Your Financial History</h3>
+                        <form id="history-form">
+                            <div class="form-section">
+                                <h4>Income</h4>
+                                <div class="form-group">
+                                    <label for="monthly-income" class="tooltip-container">
+                                        Monthly Income
+                                        <i class="fas fa-question-circle tooltip-icon"></i>
+                                        <span class="tooltip-text">Your total monthly income after taxes, including salary, wages, and regular payments.</span>
+                                    </label>
+                                    <input type="number" id="monthly-income" name="monthly-income" placeholder="$">
+                                </div>
+                                <div class="form-group">
+                                    <label for="additional-income" class="tooltip-container">
+                                        Additional Income
+                                        <i class="fas fa-question-circle tooltip-icon"></i>
+                                        <span class="tooltip-text">Any other income sources like side jobs, rental income, or irregular payments.</span>
+                                    </label>
+                                    <input type="number" id="additional-income" name="additional-income" placeholder="$">
+                                </div>
+                            </div>
+                            
+                            <div class="form-section">
+                                <h4>Expenses</h4>
+                                <div class="form-group">
+                                    <label for="housing" class="tooltip-container">
+                                        Housing
+                                        <i class="fas fa-question-circle tooltip-icon"></i>
+                                        <span class="tooltip-text">Rent or mortgage payments for your primary residence.</span>
+                                    </label>
+                                    <input type="number" id="housing" name="housing" placeholder="$">
+                                </div>
+                                <div class="form-group">
+                                    <label for="utilities" class="tooltip-container">
+                                        Utilities
+                                        <i class="fas fa-question-circle tooltip-icon"></i>
+                                        <span class="tooltip-text">Electricity, water, gas, internet, phone bills, etc.</span>
+                                    </label>
+                                    <input type="number" id="utilities" name="utilities" placeholder="$">
+                                </div>
+                                <div class="form-group">
+                                    <label for="food" class="tooltip-container">
+                                        Food
+                                        <i class="fas fa-question-circle tooltip-icon"></i>
+                                        <span class="tooltip-text">Groceries, dining out, and food delivery expenses.</span>
+                                    </label>
+                                    <input type="number" id="food" name="food" placeholder="$">
+                                </div>
+                                <div class="form-group">
+                                    <label for="transportation" class="tooltip-container">
+                                        Transportation
+                                        <i class="fas fa-question-circle tooltip-icon"></i>
+                                        <span class="tooltip-text">Car payments, gas, public transit, rideshares, etc.</span>
+                                    </label>
+                                    <input type="number" id="transportation" name="transportation" placeholder="$">
+                                </div>
+                                <div class="form-group">
+                                    <label for="entertainment" class="tooltip-container">
+                                        Entertainment
+                                        <i class="fas fa-question-circle tooltip-icon"></i>
+                                        <span class="tooltip-text">Streaming services, hobbies, events, and other discretionary spending.</span>
+                                    </label>
+                                    <input type="number" id="entertainment" name="entertainment" placeholder="$">
+                                </div>
+                                <div class="form-group">
+                                    <label for="other-expenses" class="tooltip-container">
+                                        Other Expenses
+                                        <i class="fas fa-question-circle tooltip-icon"></i>
+                                        <span class="tooltip-text">Any other regular expenses not covered in the categories above.</span>
+                                    </label>
+                                    <input type="number" id="other-expenses" name="other-expenses" placeholder="$">
+                                </div>
+                            </div>
+                            
+                            <div class="form-section">
+                                <h4>Assets</h4>
+                                <div class="form-group">
+                                    <label for="savings" class="tooltip-container">
+                                        Savings
+                                        <i class="fas fa-question-circle tooltip-icon"></i>
+                                        <span class="tooltip-text">Money in savings accounts, emergency funds, and cash.</span>
+                                    </label>
+                                    <input type="number" id="savings" name="savings" placeholder="$">
+                                </div>
+                                <div class="form-group">
+                                    <label for="investments" class="tooltip-container">
+                                        Investments
+                                        <i class="fas fa-question-circle tooltip-icon"></i>
+                                        <span class="tooltip-text">Stocks, bonds, mutual funds, ETFs, retirement accounts, etc.</span>
+                                    </label>
+                                    <input type="number" id="investments" name="investments" placeholder="$">
+                                </div>
+                                <div class="form-group">
+                                    <label for="property" class="tooltip-container">
+                                        Property Value
+                                        <i class="fas fa-question-circle tooltip-icon"></i>
+                                        <span class="tooltip-text">Estimated market value of real estate you own.</span>
+                                    </label>
+                                    <input type="number" id="property" name="property" placeholder="$">
+                                </div>
+                            </div>
+                            
+                            <div class="form-section">
+                                <div class="loan-form-header">
+                                    <h4>Loans & Debts</h4>
+                                    <button type="button" class="add-loan-btn" id="add-loan-btn">
+                                        <i class="fas fa-plus"></i> Add Loan
+                                    </button>
+                                </div>
+                                
+                                <div id="loans-container">
+                                    <!-- Default loan item -->
+                                    <div class="loan-item">
+                                        <div class="loan-item-header">
+                                            <div class="loan-item-title">Loan #1</div>
+                                            <div class="loan-item-remove"><i class="fas fa-times"></i></div>
+                                        </div>
+                                        <div class="loan-fields">
+                                            <div class="form-group">
+                                                <label for="loan-type-1" class="tooltip-container">
+                                                    Loan Type
+                                                    <i class="fas fa-question-circle tooltip-icon"></i>
+                                                    <span class="tooltip-text">Type of loan (e.g., student, auto, personal)</span>
+                                                </label>
+                                                <select id="loan-type-1" name="loan-type-1">
+                                                    <option value="student">Student Loan</option>
+                                                    <option value="auto">Auto Loan</option>
+                                                    <option value="personal">Personal Loan</option>
+                                                    <option value="mortgage">Mortgage</option>
+                                                    <option value="credit-card">Credit Card</option>
+                                                    <option value="other">Other</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="loan-balance-1" class="tooltip-container">
+                                                    Current Balance
+                                                    <i class="fas fa-question-circle tooltip-icon"></i>
+                                                    <span class="tooltip-text">Remaining amount to be paid on this loan</span>
+                                                </label>
+                                                <input type="number" id="loan-balance-1" name="loan-balance-1" placeholder="$">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="loan-apr-1" class="tooltip-container">
+                                                    Interest Rate (APR)
+                                                    <i class="fas fa-question-circle tooltip-icon"></i>
+                                                    <span class="tooltip-text">Annual Percentage Rate for this loan</span>
+                                                </label>
+                                                <input type="number" id="loan-apr-1" name="loan-apr-1" placeholder="%" step="0.01">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="loan-payment-1" class="tooltip-container">
+                                                    Monthly Payment
+                                                    <i class="fas fa-question-circle tooltip-icon"></i>
+                                                    <span class="tooltip-text">Your current monthly payment amount</span>
+                                                </label>
+                                                <input type="number" id="loan-payment-1" name="loan-payment-1" placeholder="$">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="loan-term-1" class="tooltip-container">
+                                                    Remaining Term
+                                                    <i class="fas fa-question-circle tooltip-icon"></i>
+                                                    <span class="tooltip-text">Months remaining on the loan term</span>
+                                                </label>
+                                                <input type="number" id="loan-term-1" name="loan-term-1" placeholder="months">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="btn next-tab" data-next="financial-goals">Next: Set Goals</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Financial Goals Tab -->
+                    <div id="financial-goals" class="tab-pane">
+                        <h3>Set Your Financial Goals</h3>
+                        <form id="goals-form">
+                            <div class="form-section">
+                                <h4>Short-term Goals (1-2 years)</h4>
+                                <div class="form-group">
+                                    <label for="emergency-fund">Emergency Fund</label>
+                                    <input type="number" id="emergency-fund" name="emergency-fund" placeholder="$">
+                                </div>
+                                <div class="form-group">
+                                    <label for="debt-reduction">Debt Reduction</label>
+                                    <input type="number" id="debt-reduction" name="debt-reduction" placeholder="$">
+                                </div>
+                                <div class="form-group">
+                                    <label for="vacation">Vacation/Travel</label>
+                                    <input type="number" id="vacation" name="vacation" placeholder="$">
+                                </div>
+                            </div>
+                            
+                            <div class="form-section">
+                                <h4>Medium-term Goals (3-5 years)</h4>
+                                <div class="form-group">
+                                    <label for="home-purchase">Home Purchase/Renovation</label>
+                                    <input type="number" id="home-purchase" name="home-purchase" placeholder="$">
+                                </div>
+                                <div class="form-group">
+                                    <label for="education">Education</label>
+                                    <input type="number" id="education" name="education" placeholder="$">
+                                </div>
+                                <div class="form-group">
+                                    <label for="vehicle">Vehicle</label>
+                                    <input type="number" id="vehicle" name="vehicle" placeholder="$">
+                                </div>
+                            </div>
+                            
+                            <div class="form-section">
+                                <h4>Long-term Goals (5+ years)</h4>
+                                <div class="form-group">
+                                    <label for="retirement">Retirement</label>
+                                    <input type="number" id="retirement" name="retirement" placeholder="$">
+                                </div>
+                                <div class="form-group">
+                                    <label for="children-education">Children's Education</label>
+                                    <input type="number" id="children-education" name="children-education" placeholder="$">
+                                </div>
+                                <div class="form-group">
+                                    <label for="legacy">Legacy/Estate Planning</label>
+                                    <input type="number" id="legacy" name="legacy" placeholder="$">
+                                </div>
+                            </div>
+                            
+                            <div class="form-section">
+                                <h4>Risk Tolerance</h4>
+                                <div class="form-group">
+                                    <label for="risk-tolerance">Select your risk tolerance</label>
+                                    <select id="risk-tolerance" name="risk-tolerance">
+                                        <option value="conservative">Conservative (Low Risk)</option>
+                                        <option value="moderate">Moderate (Medium Risk)</option>
+                                        <option value="aggressive">Aggressive (High Risk)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="btn prev-tab" data-prev="financial-history">Previous</button>
+                                <button type="button" class="btn generate-plan">Generate Financial Plan</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Generated Plan Tab -->
+                    <div id="generated-plan" class="tab-pane">
+                        <h3>Your Personalized Financial Plan</h3>
+                        <div id="plan-results">
+                            <div class="plan-loading">
+                                <p>Please fill out the Financial History and Goals sections to generate your plan.</p>
+                            </div>
+                            <div class="plan-content" style="display: none;">
+                                <!-- Financial Summary Section -->
+                                <div class="plan-section">
+                                    <h4>Financial Summary</h4>
+                                    <div class="dashboard-container">
+                                        <div class="dashboard-card">
+                                            <div class="dashboard-card-title">
+                                                <i class="fas fa-chart-pie"></i> Monthly Expense Breakdown
+                                            </div>
+                                            <div class="chart-container" id="expense-chart">
+                                                <!-- Expense pie chart will be rendered here -->
+                                            </div>
+                                        </div>
+                                        <div class="dashboard-card">
+                                            <div class="dashboard-card-title">
+                                                <i class="fas fa-wallet"></i> Financial Health Indicators
+                                            </div>
+                                            <div class="financial-metrics">
+                                                <div class="metric-row">
+                                                    <div class="metric-label">Monthly Income:</div>
+                                                    <div class="metric-value" id="summary-income">$0</div>
+                                                </div>
+                                                <div class="metric-row">
+                                                    <div class="metric-label">Monthly Expenses:</div>
+                                                    <div class="metric-value" id="summary-expenses">$0</div>
+                                                </div>
+                                                <div class="metric-row">
+                                                    <div class="metric-label">Monthly Savings Potential:</div>
+                                                    <div class="metric-value" id="summary-savings">$0</div>
+                                                </div>
+                                                <div class="metric-row">
+                                                    <div class="metric-label">Debt-to-Income Ratio:</div>
+                                                    <div class="metric-value" id="summary-dti">0%</div>
+                                                </div>
+                                                <div class="metric-row">
+                                                    <div class="metric-label">Emergency Fund Coverage:</div>
+                                                    <div class="metric-value" id="summary-emergency">0 months</div>
+                                                </div>
+                                                <div class="metric-row">
+                                                    <div class="metric-label">Net Worth:</div>
+                                                    <div class="metric-value" id="summary-networth">$0</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Debt Payoff vs Investment Section -->
+                                <div class="plan-section">
+                                    <h4>Debt Payoff vs Investment Strategy</h4>
+                                    <div class="dashboard-container">
+                                        <div class="dashboard-card">
+                                            <div class="dashboard-card-title">
+                                                <i class="fas fa-chart-line"></i> Loan Balance vs Investment Growth
+                                            </div>
+                                            <div class="chart-container" id="strategy-chart">
+                                                <!-- Strategy comparison chart will be rendered here -->
+                                            </div>
+                                        </div>
+                                        <div class="dashboard-card">
+                                            <div class="dashboard-card-title">
+                                                <i class="fas fa-lightbulb"></i> Recommended Strategy
+                                            </div>
+                                            <div class="recommendation-container" id="strategy-recommendation">
+                                                <!-- Strategy recommendation will be rendered here -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Action Plan Section -->
+                                <div class="plan-section">
+                                    <h4>Your 12-Month Action Plan</h4>
+                                    <div class="action-plan-timeline" id="action-plan">
+                                        <!-- Action plan timeline will be rendered here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn prev-tab" data-prev="financial-goals">Previous</button>
+                            <button type="button" class="btn" id="download-plan">Download Plan</button>
+                            <button type="button" class="btn" id="share-plan">Share Plan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Investment Knowledge Section -->
+        <section id="knowledge" class="knowledge-section">
+            <h2>Investment Knowledge Base</h2>
+            <div class="knowledge-container">
+                <div class="knowledge-categories">
+                    <div class="category" data-category="stocks">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Stocks</h3>
+                    </div>
+                    <div class="category" data-category="bonds">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <h3>Bonds</h3>
+                    </div>
+                    <div class="category" data-category="real-estate">
+                        <i class="fas fa-home"></i>
+                        <h3>Real Estate</h3>
+                    </div>
+                    <div class="category" data-category="mutual-funds">
+                        <i class="fas fa-users"></i>
+                        <h3>Mutual Funds</h3>
+                    </div>
+                    <div class="category" data-category="etfs">
+                        <i class="fas fa-exchange-alt"></i>
+                        <h3>ETFs</h3>
+                    </div>
+                    <div class="category" data-category="retirement">
+                        <i class="fas fa-umbrella-beach"></i>
+                        <h3>Retirement</h3>
+                    </div>
+                    <div class="category" data-category="crypto">
+                        <i class="fas fa-coins"></i>
+                        <h3>Cryptocurrency</h3>
+                    </div>
+                    <div class="category" data-category="tax-strategies">
+                        <i class="fas fa-file-invoice"></i>
+                        <h3>Tax Strategies</h3>
+                    </div>
+                </div>
+                
+                <div class="knowledge-content">
+                    <div id="knowledge-display">
+                        <h3>Select a category to learn more</h3>
+                        <p>Click on any investment category to view detailed information, strategies, and tips.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <h2>About FinancialFuture</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>FinancialFuture is a comprehensive financial planning tool designed to help individuals take control of their financial future. Our mission is to make financial planning accessible to everyone by providing personalized guidance based on your unique financial situation and goals.</p>
+                    <p>Our platform uses advanced algorithms to analyze your financial history and goals, generating customized plans that help you achieve financial freedom. We also provide educational resources to help you make informed investment decisions.</p>
+                    <p>Please note that while our tool provides valuable guidance, it is not a substitute for professional financial advice. We recommend consulting with a certified financial planner for complex financial situations.</p>
+                </div>
+                <div class="team-info">
+                    <h3>Our Team</h3>
+                    <p>FinancialFuture was created by a team of financial experts and software developers passionate about helping people achieve financial independence.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>FinancialFuture</h2>
+                <p>Your path to financial freedom</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#planner">Financial Planner</a></li>
+                    <li><a href="investment-knowledge.html">Investment Knowledge</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p>Email: info@financialfuture.com</p>
+                <p>Phone: (555) 123-4567</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 FinancialFuture. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
