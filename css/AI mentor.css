@@ -1,0 +1,300 @@
+/* ai-mentor.css
+   Modern, accessible styles for an "AI Mentor" component.
+   Usage: import this file into your React component.
+*/
+
+/* ---------- Theme variables ---------- */
+:root {
+  --bg:  #0f1724; /* deep slate */
+  --panel: #0b1220;
+  --muted: #94a3b8;
+  --text: #e6eef8;
+  --accent-1: #06b6d4; /* cyan */
+  --accent-2: #34d399; /* mint */
+  --glass: rgba(255,255,255,0.04);
+  --glass-2: rgba(255,255,255,0.02);
+  --success: #10b981;
+  --danger: #ef4444;
+  --radius: 14px;
+  --shadow-1: 0 6px 18px rgba(2,6,23,0.6);
+  --shadow-2: 0 8px 30px rgba(2,6,23,0.45);
+  --transition: 220ms cubic-bezier(.2,.9,.3,1);
+  --max-width: 980px;
+  --ui-gap: 18px;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Dark/light switch via prefers-color-scheme */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f7fbff;
+    --panel: #ffffff;
+    --muted: #6b7280;
+    --text: #0b1220;
+    --glass: rgba(11,18,32,0.03);
+    --glass-2: rgba(11,18,32,0.02);
+    --shadow-1: 0 6px 18px rgba(12,20,30,0.08);
+    --shadow-2: 0 8px 30px rgba(12,20,30,0.06);
+  }
+}
+
+/* ---------- Global ---------- */
+.ai-mentor {
+  font-family: var(--font-sans);
+  color: var(--text);
+  background: radial-gradient(1200px 400px at 10% 10%, rgba(3,7,18,0.4), transparent 8%),
+              linear-gradient(180deg, var(--bg), rgba(2,6,23,0.02));
+  padding: 48px 20px;
+  display: flex;
+  justify-content: center;
+  min-height: 60vh;
+  box-sizing: border-box;
+}
+
+/* Centered panel */
+.ai-mentor__panel {
+  width: 100%;
+  max-width: var(--max-width);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  border-radius: calc(var(--radius) + 2px);
+  padding: 28px;
+  box-shadow: var(--shadow-2);
+  backdrop-filter: blur(8px) saturate(120%);
+  border: 1px solid var(--glass);
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+/* Mobile layout */
+@media (max-width: 880px) {
+  .ai-mentor__panel {
+    grid-template-columns: 1fr;
+    padding: 18px;
+  }
+}
+
+/* ---------- Left column: mentor card / quick actions ---------- */
+.ai-mentor__card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), var(--glass-2));
+  border-radius: var(--radius);
+  padding: 18px;
+  border: 1px solid var(--glass);
+  box-shadow: var(--shadow-1);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 220px;
+}
+
+/* Mentor header */
+.ai-mentor__header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.ai-mentor__avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  display: grid;
+  place-items: center;
+  color: white;
+  font-weight: 700;
+  font-size: 22px;
+  box-shadow: 0 6px 18px rgba(6,11,22,0.45), inset 0 -6px 18px rgba(255,255,255,0.06);
+}
+.ai-mentor__title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1;
+}
+.ai-mentor__subtitle {
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+
+/* Quick actions */
+.ai-mentor__actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.ai-mentor__chip {
+  background: transparent;
+  border: 1px dashed var(--glass);
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.86rem;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.ai-mentor__chip:hover {
+  color: var(--text);
+  border-style: solid;
+  transform: translateY(-3px);
+}
+
+/* ---------- Right column: form + results ---------- */
+.ai-mentor__main {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Form */
+.ai-mentor__form {
+  display: grid;
+  gap: 12px;
+  background: linear-gradient(180deg, transparent, rgba(255,255,255,0.01));
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid var(--glass);
+}
+
+/* Input & textarea */
+.ai-mentor__input,
+.ai-mentor__textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.04);
+  color: var(--text);
+  font-size: 0.95rem;
+  outline: none;
+  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+  resize: vertical;
+  min-height: 44px;
+}
+.ai-mentor__textarea { min-height: 120px; }
+
+/* Focus state accessible */
+.ai-mentor__input:focus,
+.ai-mentor__textarea:focus {
+  box-shadow: 0 6px 30px rgba(3,7,18,0.45), 0 0 0 4px rgba(6,182,212,0.06);
+  border-color: var(--accent-1);
+  transform: translateY(-2px);
+}
+
+/* Controls row */
+.ai-mentor__controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Primary button */
+.ai-mentor__btn {
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  color: white;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 30px rgba(3,7,18,0.45);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.ai-mentor__btn:hover { transform: translateY(-3px); }
+.ai-mentor__btn:active { transform: translateY(-1px) scale(.995); }
+.ai-mentor__btn[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Secondary (ghost) button */
+.ai-mentor__btn--ghost {
+  background: transparent;
+  border: 1px solid var(--glass);
+  color: var(--muted);
+  padding: 9px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+/* ---------- Response / chat area ---------- */
+.ai-mentor__result {
+  margin-top: 6px;
+  padding: 14px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+  border: 1px solid rgba(255,255,255,0.03);
+  min-height: 120px;
+  box-shadow: var(--shadow-1);
+  overflow: auto;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Message bubbles */
+.ai-mentor__msg {
+  display: inline-block;
+  padding: 12px 14px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  max-width: 86%;
+}
+.ai-mentor__msg--user {
+  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  color: var(--text);
+  align-self: flex-end;
+  border: 1px solid rgba(255,255,255,0.025);
+}
+.ai-mentor__msg--ai {
+  background: linear-gradient(90deg, rgba(6,182,212,0.12), rgba(52,211,153,0.06));
+  border: 1px solid rgba(6,182,212,0.12);
+  color: var(--text);
+}
+
+/* ---------- Helper UI elements ---------- */
+.ai-mentor__meta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.ai-mentor__small {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+/* Loading skeleton */
+.ai-mentor__loading {
+  height: 72px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  position: relative;
+  overflow: hidden;
+}
+.ai-mentor__loading::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-110%);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+  animation: shimmer 1.2s linear infinite;
+}
+@keyframes shimmer {
+  to { transform: translateX(110%); }
+}
+
+/* ---------- Accessibility tweaks ---------- */
+.ai-mentor__btn:focus,
+.ai-mentor__chip:focus,
+.ai-mentor__input:focus,
+.ai-mentor__textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(6,182,212,0.08);
+}
+
+/* ---------- Utility ---------- */
+.flex { display: flex; }
+.center { display: grid; place-items: center; }
