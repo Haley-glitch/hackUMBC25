@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f5f7fa" />
+  
+  <!-- Financial Growth Chart -->
+  <polyline points="100,500 200,400 300,420 400,300 500,280 600,200 700,150" 
+            fill="none" stroke="#2c7be5" stroke-width="5" />
+  
+  <!-- Chart Grid Lines -->
+  <line x1="100" y1="100" x2="100" y2="500" stroke="#e3e6f0" stroke-width="2" />
+  <line x1="100" y1="500" x2="700" y2="500" stroke="#e3e6f0" stroke-width="2" />
+  <line x1="100" y1="400" x2="700" y2="400" stroke="#e3e6f0" stroke-width="1" stroke-dasharray="5,5" />
+  <line x1="100" y1="300" x2="700" y2="300" stroke="#e3e6f0" stroke-width="1" stroke-dasharray="5,5" />
+  <line x1="100" y1="200" x2="700" y2="200" stroke="#e3e6f0" stroke-width="1" stroke-dasharray="5,5" />
+  
+  <!-- Person Figure -->
+  <circle cx="350" cy="150" r="40" fill="#95aac9" />
+  <rect x="330" y="190" width="40" height="80" fill="#95aac9" />
+  <line x1="330" y1="220" x2="290" y2="260" stroke="#95aac9" stroke-width="20" stroke-linecap="round" />
+  <line x1="370" y1="220" x2="410" y2="260" stroke="#95aac9" stroke-width="20" stroke-linecap="round" />
+  
+  <!-- Money Icons -->
+  <circle cx="200" cy="200" r="30" fill="#00d97e" />
+  <text x="200" y="210" font-family="Arial" font-size="30" text-anchor="middle" fill="white">$</text>
+  
+  <circle cx="600" cy="300" r="30" fill="#00d97e" />
+  <text x="600" y="310" font-family="Arial" font-size="30" text-anchor="middle" fill="white">$</text>
+  
+  <!-- House Icon -->
+  <polygon points="500,350 450,400 450,450 550,450 550,400" fill="#6e84a3" />
+  <rect x="480" y="420" width="40" height="30" fill="white" />
+  
+  <!-- Piggy Bank -->
+  <circle cx="250" cy="350" r="40" fill="#f6c343" />
+  <circle cx="230" cy="340" r="5" fill="white" />
+  <rect x="290" y="350" width="20" height="10" fill="#f6c343" />
+  <rect x="250" y="390" width="10" height="20" fill="#f6c343" />
+  <rect x="270" y="390" width="10" height="20" fill="#f6c343" />
+  
+  <!-- Coins Stack -->
+  <circle cx="150" cy="450" r="20" fill="#f6c343" stroke="#e63757" stroke-width="2" />
+  <circle cx="150" cy="430" r="20" fill="#f6c343" stroke="#e63757" stroke-width="2" />
+  <circle cx="150" cy="410" r="20" fill="#f6c343" stroke="#e63757" stroke-width="2" />
+</svg>
