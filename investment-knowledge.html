@@ -4,485 +4,609 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Investment Knowledge Base - FinancialFuture</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/investment-knowledge.css">
-    <link rel="stylesheet" href="css/stock-market.css">
-    <link rel="stylesheet" href="css/financial-tooltips.css">
-    <link rel="stylesheet" href="css/instagram-reels.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+    <style>
+        /* Investment Knowledge Base Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fafc;
+        }
+
+        .knowledge-hub-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .hub-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hub-badge {
+            display: inline-block;
+            background-color: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .hub-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .hub-description {
+            font-size: 1.125rem;
+            color: #64748b;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hub-tabs {
+            display: flex;
+            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+        }
+
+        .hub-tab {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            font-weight: 500;
+            color: #64748b;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+        }
+
+        .hub-tab.active {
+            color: #2c7be5;
+            border-bottom-color: #2c7be5;
+        }
+
+        .hub-tab i {
+            margin-right: 0.5rem;
+        }
+
+        .hub-content {
+            min-height: 500px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Stock Market Section */
+        .stock-market-container {
+            margin-bottom: 2rem;
+        }
+
+        .stock-market-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stock-market-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .stock-search-container {
+            margin-bottom: 1.5rem;
+        }
+
+        .stock-search {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stock-search-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .stock-search-btn {
+            padding: 0.75rem 1.5rem;
+            background-color: #2c7be5;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .popular-stocks {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .stock-chip {
+            padding: 0.5rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 9999px;
+            background: white;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+
+        .stock-chip:hover {
+            background-color: #f1f5f9;
+            border-color: #2c7be5;
+        }
+
+        .stock-chart-container {
+            margin-bottom: 1.5rem;
+        }
+
+        .stock-chart {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+            height: 500px;
+        }
+
+        .stock-details-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .stock-info {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+        }
+
+        .stock-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .stock-name {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .stock-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .stock-change {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stock-change-value {
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .stock-change-positive {
+            color: #15803d;
+        }
+
+        .stock-change-negative {
+            color: #b91c1c;
+        }
+
+        .stock-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stock-metric {
+            padding: 0.75rem;
+            background-color: #f8fafc;
+            border-radius: 0.5rem;
+        }
+
+        .stock-metric-label {
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-bottom: 0.25rem;
+        }
+
+        .stock-metric-value {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        /* AI Chat Section - Enhanced */
+        .ai-chat-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            color: white;
+            margin-top: 1.5rem;
+        }
+
+        .chat-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .chat-header i {
+            font-size: 1.25rem;
+        }
+
+        .chat-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.75rem;
+            height: 300px;
+            overflow-y: auto;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .chat-message {
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .user-message {
+            background: rgba(255, 255, 255, 0.2);
+            margin-left: 2rem;
+        }
+
+        .ai-message {
+            background: rgba(255, 255, 255, 0.15);
+            margin-right: 2rem;
+        }
+
+        .message-role {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            font-size: 0.875rem;
+        }
+
+        .message-content {
+            font-size: 0.9rem;
+        }
+
+        .message-content code {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.125rem 0.25rem;
+            border-radius: 0.25rem;
+            font-family: monospace;
+        }
+
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-style: italic;
+            opacity: 0.8;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .typing-dot {
+            width: 4px;
+            height: 4px;
+            background: currentColor;
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% { opacity: 0.3; }
+            30% { opacity: 1; }
+        }
+
+        .chat-input-container {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-end;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            resize: vertical;
+            min-height: 44px;
+            max-height: 120px;
+            font-family: inherit;
+        }
+
+        .chat-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .chat-send {
+            padding: 0.75rem 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 0.5rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .chat-send:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .chat-send:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* API Configuration */
+        .api-config-panel {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .api-config-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .api-input-group {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .api-key-input {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            font-family: monospace;
+        }
+
+        .api-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .api-status.ready {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .api-status.error {
+            background: #fecaca;
+            color: #b91c1c;
+        }
+
+        .api-help {
+            font-size: 0.8rem;
+            color: #64748b;
+            line-height: 1.4;
+        }
+
+        .api-help a {
+            color: #2c7be5;
+            text-decoration: none;
+        }
+
+        .api-help a:hover {
+            text-decoration: underline;
+        }
+
+        /* Error/Success Messages */
+        .message-alert {
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+        }
+
+        .message-alert.error {
+            background: #fef2f2;
+            color: #b91c1c;
+            border: 1px solid #fecaca;
+        }
+
+        .message-alert.success {
+            background: #f0fdf4;
+            color: #15803d;
+            border: 1px solid #bbf7d0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .stock-details-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .stock-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .chat-input-container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .chat-send {
+                align-self: stretch;
+                justify-content: center;
+            }
+
+            .api-input-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .hub-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                <h1>Budget2Broker</h1>
+    <div class="knowledge-hub-container">
+        <div class="hub-header">
+            <div class="hub-badge">
+                <i class="fas fa-book-open"></i> Financial Education Hub
             </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#planner">Financial Planner</a></li>
-                <li><a href="investment-knowledge.html" class="active">Investment Knowledge</a></li>
-                <li><a href="about.html">About</a></li>
-            </ul>
-            <div class="cta-button">
-                <a href="index.html#planner" class="btn">Start Planning</a>
+            <h1 class="hub-title">Master Your Financial Future</h1>
+            <p class="hub-description">
+                Discover investment types, get AI-powered insights, and access resources tailored
+                for every stage of your financial journey.
+            </p>
+        </div>
+
+        <div class="hub-tabs">
+            <div class="hub-tab active" data-tab="stock-market">
+                <i class="fas fa-chart-line"></i> Stock Market AI
             </div>
-        </nav>
-    </header>
+        </div>
 
-    <main>
-        <div class="knowledge-hub-container">
-            <div class="hub-header">
-                <div class="hub-badge">
-                    <i class="fas fa-book-open"></i> Financial Education Hub
-                </div>
-                <h1 class="hub-title">Master Your Financial Future</h1>
-                <p class="hub-description">
-                    Discover investment types, calculate compound interest, and access resources tailored
-                    for every stage of your financial journey.
-                </p>
-            </div>
-
-            <div class="hub-tabs">
-                <div class="hub-tab active" data-tab="investment-types">
-                    <i class="fas fa-chart-pie"></i> Investment Types
-                </div>
-                <div class="hub-tab" data-tab="calculator">
-                    <i class="fas fa-calculator"></i> Calculator
-                </div>
-                <div class="hub-tab" data-tab="high-yield-savings">
-                    <i class="fas fa-piggy-bank"></i> High-Yield Savings
-                </div>
-                <div class="hub-tab" data-tab="stock-market">
-                    <i class="fas fa-chart-line"></i> Stock Market
-                </div>
-                <div class="hub-tab" data-tab="college-guide">
-                    <i class="fas fa-graduation-cap"></i> College Guide
-                </div>
-                   <div class="hub-tab" data-tab="instagram-reels">
-                       <i class="fab fa-instagram"></i> Instagram Reels
-                   </div>
-            </div>
-
-            <div class="hub-content">
-                <!-- Investment Types Tab -->
-                <div class="tab-content active" id="investment-types">
-                    <div class="investment-search">
-                        <input type="text" class="search-input" placeholder="Search investments...">
+        <div class="hub-content">
+            <div class="tab-content active" id="stock-market">
+                <!-- API Configuration Panel -->
+                <div class="api-config-panel">
+                    <div class="api-config-title">
+                        <i class="fas fa-cog"></i> AI Configuration
                     </div>
-
-                    <div class="risk-filters">
-                        <div class="risk-filter all">All</div>
-                        <div class="risk-filter conservative">Conservative</div>
-                        <div class="risk-filter moderate">Moderate</div>
-                        <div class="risk-filter aggressive">Aggressive</div>
+                    <div class="api-input-group">
+                        <input 
+                            type="password" 
+                            id="api-key-input" 
+                            class="api-key-input" 
+                            placeholder="Enter your Gemini API key..."
+                        >
+                        <div id="api-status" class="api-status">Not configured</div>
                     </div>
-
-                    <div class="investment-grid">
-                        <!-- High-Yield Savings Account -->
-                        <div class="investment-card" data-investment="hysa">
-                            <div class="investment-card-header">
-                                <div class="investment-icon icon-hysa">
-                                    <i class="fas fa-piggy-bank"></i>
-                                </div>
-                                <div>
-                                    <span class="risk-badge risk-1-10">Risk: 1/10</span>
-                                    <span class="liquidity-badge">High Liquidity</span>
-                                </div>
-                            </div>
-                            <h3 class="investment-card-title">High-Yield Savings Account</h3>
-                            <p class="investment-card-description">
-                                A savings account that offers significantly higher interest rates than traditional savings accounts, typically 10-25x higher than national averages.
-                            </p>
-                            <div class="investment-card-metrics">
-                                <div class="metric">
-                                    <div class="metric-label">Expected Return:</div>
-                                    <div class="metric-value">4.0% - 5.0% APY</div>
-                                </div>
-                                <div class="metric">
-                                    <div class="metric-label">Min Investment:</div>
-                                    <div class="metric-value">$0 - $100</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Index Funds -->
-                        <div class="investment-card" data-investment="index-funds">
-                            <div class="investment-card-header">
-                                <div class="investment-icon icon-index">
-                                    <i class="fas fa-chart-bar"></i>
-                                </div>
-                                <div>
-                                    <span class="risk-badge risk-5-10">Risk: 5/10</span>
-                                    <span class="liquidity-badge">High Liquidity</span>
-                                </div>
-                            </div>
-                            <h3 class="investment-card-title">Index Funds</h3>
-                            <p class="investment-card-description">
-                                Mutual funds or ETFs that track a specific market index like the S&P 500, providing instant diversification across hundreds of stocks.
-                            </p>
-                            <div class="investment-card-metrics">
-                                <div class="metric">
-                                    <div class="metric-label">Expected Return:</div>
-                                    <div class="metric-value">8% - 12% annually</div>
-                                </div>
-                                <div class="metric">
-                                    <div class="metric-label">Min Investment:</div>
-                                    <div class="metric-value">$1 - $3,000</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Individual Stocks -->
-                        <div class="investment-card" data-investment="stocks">
-                            <div class="investment-card-header">
-                                <div class="investment-icon icon-stocks">
-                                    <i class="fas fa-chart-line"></i>
-                                </div>
-                                <div>
-                                    <span class="risk-badge risk-8-10">Risk: 8/10</span>
-                                    <span class="liquidity-badge">High Liquidity</span>
-                                </div>
-                            </div>
-                            <h3 class="investment-card-title">Individual Stocks</h3>
-                            <p class="investment-card-description">
-                                Shares of ownership in individual companies. Requires research and offers potential for high returns but with significant risk.
-                            </p>
-                            <div class="investment-card-metrics">
-                                <div class="metric">
-                                    <div class="metric-label">Expected Return:</div>
-                                    <div class="metric-value">-100% to +1000%+</div>
-                                </div>
-                                <div class="metric">
-                                    <div class="metric-label">Min Investment:</div>
-                                    <div class="metric-value">$1 (fractional shares)</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Target-Date Funds -->
-                        <div class="investment-card" data-investment="target-date">
-                            <div class="investment-card-header">
-                                <div class="investment-icon icon-target">
-                                    <i class="fas fa-bullseye"></i>
-                                </div>
-                                <div>
-                                    <span class="risk-badge risk-4-10">Risk: 4/10</span>
-                                    <span class="liquidity-badge">High Liquidity</span>
-                                </div>
-                            </div>
-                            <h3 class="investment-card-title">Target-Date Funds</h3>
-                            <p class="investment-card-description">
-                                Mutual funds that automatically adjust their asset allocation to become more conservative as they approach a target date, typically retirement.
-                            </p>
-                            <div class="investment-card-metrics">
-                                <div class="metric">
-                                    <div class="metric-label">Expected Return:</div>
-                                    <div class="metric-value">6% - 10% annually</div>
-                                </div>
-                                <div class="metric">
-                                    <div class="metric-label">Min Investment:</div>
-                                    <div class="metric-value">$0 - $1,000</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Corporate Bonds -->
-                        <div class="investment-card" data-investment="bonds">
-                            <div class="investment-card-header">
-                                <div class="investment-icon icon-bonds">
-                                    <i class="fas fa-file-invoice-dollar"></i>
-                                </div>
-                                <div>
-                                    <span class="risk-badge risk-3-10">Risk: 3/10</span>
-                                    <span class="liquidity-badge">Medium Liquidity</span>
-                                </div>
-                            </div>
-                            <h3 class="investment-card-title">Corporate Bonds</h3>
-                            <p class="investment-card-description">
-                                Debt securities issued by corporations to raise capital. Bondholders receive regular interest payments and the principal back at maturity.
-                            </p>
-                            <div class="investment-card-metrics">
-                                <div class="metric">
-                                    <div class="metric-label">Expected Return:</div>
-                                    <div class="metric-value">4% - 7% annually</div>
-                                </div>
-                                <div class="metric">
-                                    <div class="metric-label">Min Investment:</div>
-                                    <div class="metric-value">$1,000 - $5,000</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- REITs -->
-                        <div class="investment-card" data-investment="reits">
-                            <div class="investment-card-header">
-                                <div class="investment-icon icon-reits">
-                                    <i class="fas fa-building"></i>
-                                </div>
-                                <div>
-                                    <span class="risk-badge risk-5-10">Risk: 5/10</span>
-                                    <span class="liquidity-badge">High Liquidity</span>
-                                </div>
-                            </div>
-                            <h3 class="investment-card-title">Real Estate Investment Trusts (REITs)</h3>
-                            <p class="investment-card-description">
-                                Companies that own, operate, or finance income-producing real estate across various property sectors.
-                            </p>
-                            <div class="investment-card-metrics">
-                                <div class="metric">
-                                    <div class="metric-label">Expected Return:</div>
-                                    <div class="metric-value">7% - 12% annually</div>
-                                </div>
-                                <div class="metric">
-                                    <div class="metric-label">Min Investment:</div>
-                                    <div class="metric-value">$1 - $100</div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="api-help">
+                        Get your free API key from <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a>. 
+                        Your key is stored locally and never sent to our servers.
                     </div>
                 </div>
 
-                <!-- Calculator Tab -->
-                <div class="tab-content" id="calculator">
-                    <div class="calculator-container">
-                        <h2 class="calculator-title">
-                            <i class="fas fa-calculator"></i> Compound Interest Calculator
-                        </h2>
-                        <div class="calculator-grid">
-                            <div class="calculator-inputs">
-                                <div class="input-group">
-                                    <label class="input-label">Initial Investment</label>
-                                    <input type="number" id="initial-investment" class="input-field" value="1000" min="0">
-                                </div>
+                <div class="stock-market-container">
+                    <div class="stock-market-header">
+                        <i class="fas fa-chart-line"></i>
+                        <h2 class="stock-market-title">Stock Market Explorer with AI Assistant</h2>
+                    </div>
+                    
+                    <div class="stock-search-container">
+                        <div class="stock-search">
+                            <input type="text" id="stock-symbol-input" placeholder="Enter stock symbol (e.g., AAPL, MSFT, AMZN)" class="stock-search-input">
+                            <button id="stock-search-btn" class="stock-search-btn">
+                                <i class="fas fa-search"></i> Search
+                            </button>
+                        </div>
+                        <div class="popular-stocks">
+                            <span>Popular: </span>
+                            <button class="stock-chip" data-symbol="AAPL">Apple</button>
+                            <button class="stock-chip" data-symbol="MSFT">Microsoft</button>
+                            <button class="stock-chip" data-symbol="AMZN">Amazon</button>
+                            <button class="stock-chip" data-symbol="GOOGL">Google</button>
+                            <button class="stock-chip" data-symbol="TSLA">Tesla</button>
+                        </div>
+                    </div>
+                    
+                    <div class="stock-chart-container">
+                        <div class="stock-chart">
+                            <div class="tradingview-widget-container">
+                                <div id="tradingview_chart" style="height:100%;width:100%"></div>
+                                <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                                <script>
+                                let tradingViewWidget;
                                 
-                                <div class="input-group">
-                                    <label class="input-label">Monthly Contribution</label>
-                                    <input type="number" id="monthly-contribution" class="input-field" value="100" min="0">
-                                </div>
-                                
-                                <div class="slider-container">
-                                    <div class="slider-header">
-                                        <label class="input-label">Annual Return Rate</label>
-                                        <span class="slider-value" id="return-rate-value">15%</span>
-                                    </div>
-                                    <input type="range" id="annual-return" class="slider" min="1" max="30" value="15">
-                                </div>
-                                
-                                <div class="slider-container">
-                                    <div class="slider-header">
-                                        <label class="input-label">Time Period</label>
-                                        <span class="slider-value" id="time-period-value">10 years</span>
-                                    </div>
-                                    <input type="range" id="time-period" class="slider" min="1" max="40" value="10">
-                                </div>
-                            </div>
-                            
-                            <div class="calculator-results">
-                                <h3 class="results-header">
-                                    <i class="fas fa-dollar-sign"></i> Your Investment Growth
-                                </h3>
-                                <div class="final-amount" id="final-amount">$31,961.92</div>
-                                
-                                <div class="result-metrics">
-                                    <div class="result-metric contributions">
-                                        <span class="result-metric-label">Total Contributions</span>
-                                        <span class="result-metric-value" id="total-contributions">$13,000</span>
-                                    </div>
-                                    <div class="result-metric interest">
-                                        <span class="result-metric-label">Interest Earned</span>
-                                        <span class="result-metric-value" id="interest-earned">$18,961.92</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- High-Yield Savings Tab -->
-                <div class="tab-content" id="high-yield-savings">
-                    <div class="hysa-container">
-                        <div class="hysa-header">
-                            <i class="fas fa-piggy-bank"></i>
-                            <h2 class="hysa-title">High-Yield Savings Accounts (2025)</h2>
-                        </div>
-                        <p class="hysa-subtitle">Build your emergency fund with these top-rated high-yield savings accounts</p>
-                        
-                        <div class="hysa-list">
-                            <!-- Marcus by Goldman Sachs -->
-                            <div class="hysa-card">
-                                <div class="hysa-info">
-                                    <h3 class="hysa-name">
-                                        Marcus by Goldman Sachs
-                                        <span class="hysa-rating rating-excellent">Excellent</span>
-                                    </h3>
-                                    <div class="hysa-metrics">
-                                        <div class="hysa-metric">
-                                            <span class="hysa-metric-label">APY:</span>
-                                            <span class="hysa-metric-value">4.50%</span>
-                                        </div>
-                                        <div class="hysa-metric">
-                                            <span class="hysa-metric-label">Min:</span>
-                                            <span class="hysa-metric-value">$0</span>
-                                        </div>
-                                    </div>
-                                    <div class="hysa-features">
-                                        <span class="hysa-feature">No minimum balance</span>
-                                        <span class="hysa-feature">No fees</span>
-                                        <span class="hysa-feature">FDIC insured</span>
-                                    </div>
-                                </div>
-                                <div class="hysa-action">
-                                    <a href="#" class="learn-more">
-                                        Learn More <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            
-                            <!-- Ally Bank Online Savings -->
-                            <div class="hysa-card">
-                                <div class="hysa-info">
-                                    <h3 class="hysa-name">
-                                        Ally Bank Online Savings
-                                        <span class="hysa-rating rating-excellent">Excellent</span>
-                                    </h3>
-                                    <div class="hysa-metrics">
-                                        <div class="hysa-metric">
-                                            <span class="hysa-metric-label">APY:</span>
-                                            <span class="hysa-metric-value">4.25%</span>
-                                        </div>
-                                        <div class="hysa-metric">
-                                            <span class="hysa-metric-label">Min:</span>
-                                            <span class="hysa-metric-value">$0</span>
-                                        </div>
-                                    </div>
-                                    <div class="hysa-features">
-                                        <span class="hysa-feature">No minimum balance</span>
-                                        <span class="hysa-feature">No monthly fees</span>
-                                        <span class="hysa-feature">24/7 customer support</span>
-                                    </div>
-                                </div>
-                                <div class="hysa-action">
-                                    <a href="#" class="learn-more">
-                                        Learn More <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            
-                            <!-- American Express Personal Savings -->
-                            <div class="hysa-card">
-                                <div class="hysa-info">
-                                    <h3 class="hysa-name">
-                                        American Express Personal Savings
-                                        <span class="hysa-rating rating-very-good">Very Good</span>
-                                    </h3>
-                                    <div class="hysa-metrics">
-                                        <div class="hysa-metric">
-                                            <span class="hysa-metric-label">APY:</span>
-                                            <span class="hysa-metric-value">4.35%</span>
-                                        </div>
-                                        <div class="hysa-metric">
-                                            <span class="hysa-metric-label">Min:</span>
-                                            <span class="hysa-metric-value">$0</span>
-                                        </div>
-                                    </div>
-                                    <div class="hysa-features">
-                                        <span class="hysa-feature">No minimum balance</span>
-                                        <span class="hysa-feature">No fees</span>
-                                        <span class="hysa-feature">Mobile app</span>
-                                    </div>
-                                </div>
-                                <div class="hysa-action">
-                                    <a href="#" class="learn-more">
-                                        Learn More <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            
-                            <!-- Capital One 360 Performance Savings -->
-                            <div class="hysa-card">
-                                <div class="hysa-info">
-                                    <h3 class="hysa-name">
-                                        Capital One 360 Performance Savings
-                                        <span class="hysa-rating rating-very-good">Very Good</span>
-                                    </h3>
-                                    <div class="hysa-metrics">
-                                        <div class="hysa-metric">
-                                            <span class="hysa-metric-label">APY:</span>
-                                            <span class="hysa-metric-value">4.10%</span>
-                                        </div>
-                                        <div class="hysa-metric">
-                                            <span class="hysa-metric-label">Min:</span>
-                                            <span class="hysa-metric-value">$0</span>
-                                        </div>
-                                    </div>
-                                    <div class="hysa-features">
-                                        <span class="hysa-feature">No fees</span>
-                                        <span class="hysa-feature">No minimum balance</span>
-                                        <span class="hysa-feature">Easy online access</span>
-                                    </div>
-                                </div>
-                                <div class="hysa-action">
-                                    <a href="#" class="learn-more">
-                                        Learn More <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="hysa-disclaimer">
-                            <div class="disclaimer-icon">
-                                <i class="fas fa-info-circle"></i>
-                            </div>
-                            <p class="disclaimer-text">
-                                <strong>Remember:</strong> All accounts listed are FDIC insured up to $250,000. APY rates can change at any time. Always verify current rates before opening an account.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Stock Market Tab -->
-                <div class="tab-content" id="stock-market">
-                    <div class="stock-market-container">
-                        <div class="stock-market-header">
-                            <i class="fas fa-chart-line"></i>
-                            <h2 class="stock-market-title">Stock Market Explorer</h2>
-                        </div>
-                        
-                        <div class="stock-search-container">
-                            <div class="stock-search">
-                                <input type="text" id="stock-symbol-input" placeholder="Enter stock symbol (e.g., AAPL, MSFT, AMZN)" class="stock-search-input">
-                                <button id="stock-search-btn" class="stock-search-btn">
-                                    <i class="fas fa-search"></i> Search
-                                </button>
-                            </div>
-                            <div class="popular-stocks">
-                                <span>Popular: </span>
-                                <button class="stock-chip" data-symbol="AAPL">Apple</button>
-                                <button class="stock-chip" data-symbol="MSFT">Microsoft</button>
-                                <button class="stock-chip" data-symbol="AMZN">Amazon</button>
-                                <button class="stock-chip" data-symbol="GOOGL">Google</button>
-                                <button class="stock-chip" data-symbol="TSLA">Tesla</button>
-                            </div>
-                        </div>
-                        
-                        <!-- Enlarged chart area -->
-                        <div class="stock-chart-container">
-                            <div class="stock-chart">
-                                <!-- TradingView Widget BEGIN -->
-                                <div class="tradingview-widget-container">
-                                    <div id="tradingview_chart" style="height:100%;width:100%"></div>
-                                    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-                                    <script type="text/javascript">
-                                    let tradingViewWidget;
-                                    
-                                    function createTradingViewWidget(symbol = "NASDAQ:TSLA") {
-                                        // If widget already exists, destroy it
+                                function createTradingViewWidget(symbol = "NASDAQ:TSLA") {
+                                    try {
                                         if (tradingViewWidget) {
                                             document.getElementById('tradingview_chart').innerHTML = '';
                                         }
                                         
-                                        // Create new widget
+                                        // Check if TradingView is available
+                                        if (typeof TradingView === 'undefined') {
+                                            document.getElementById('tradingview_chart').innerHTML = `
+                                                <div style="display: flex; align-items: center; justify-content: center; height: 100%; flex-direction: column; color: #64748b;">
+                                                    <i class="fas fa-chart-line" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                                                    <h3 style="margin: 0; font-size: 1.25rem;">Chart Loading...</h3>
+                                                    <p style="margin: 0.5rem 0 0 0; text-align: center;">TradingView chart will appear here<br>when resources are loaded.</p>
+                                                </div>
+                                            `;
+                                            return;
+                                        }
+                                        
                                         tradingViewWidget = new TradingView.widget({
                                             "width": "100%",
                                             "height": "100%",
@@ -501,843 +625,584 @@
                                         });
                                         
                                         return tradingViewWidget;
-                                    }
-                                    
-                                    document.addEventListener('DOMContentLoaded', function() {
-                                        createTradingViewWidget();
-                                        
-                                        // Handle stock search
-                                        document.getElementById('stock-search-btn').addEventListener('click', function() {
-                                            const symbolInput = document.getElementById('stock-symbol-input').value.trim().toUpperCase();
-                                            if (symbolInput) {
-                                                updateStock(symbolInput);
-                                            }
-                                        });
-                                        
-                                        // Handle enter key in search input
-                                        document.getElementById('stock-symbol-input').addEventListener('keypress', function(e) {
-                                            if (e.key === 'Enter') {
-                                                document.getElementById('stock-search-btn').click();
-                                            }
-                                        });
-                                        
-                                        // Handle popular stock chips
-                                        document.querySelectorAll('.stock-chip').forEach(chip => {
-                                            chip.addEventListener('click', function() {
-                                                const symbol = this.getAttribute('data-symbol');
-                                                document.getElementById('stock-symbol-input').value = symbol;
-                                                updateStock(symbol);
-                                            });
-                                        });
-                                    });
-                                    
-                                    function updateStock(symbol) {
-                                        // Format symbol for TradingView (add exchange if not present)
-                                        let formattedSymbol = symbol;
-                                        if (!symbol.includes(':')) {
-                                            formattedSymbol = "NASDAQ:" + symbol;
-                                        }
-                                        
-                                        // Update chart
-                                        createTradingViewWidget(formattedSymbol);
-                                        
-                                        // Update stock info
-                                        updateStockInfo(symbol);
-                                        
-                                        // Update chat context
-                                        document.getElementById('stock-chat-messages').innerHTML = `
-                                            <div class="chat-message">
-                                                <strong>AI Assistant:</strong> I can help you understand the ${symbol} stock chart and metrics. What would you like to know?
+                                    } catch (error) {
+                                        console.error('TradingView Widget Error:', error);
+                                        document.getElementById('tradingview_chart').innerHTML = `
+                                            <div style="display: flex; align-items: center; justify-content: center; height: 100%; flex-direction: column; color: #64748b;">
+                                                <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                                                <h3 style="margin: 0; font-size: 1.25rem;">Chart Unavailable</h3>
+                                                <p style="margin: 0.5rem 0 0 0; text-align: center;">Unable to load TradingView chart.<br>Please refresh the page to try again.</p>
                                             </div>
                                         `;
                                     }
-                                    </script>
-                                </div>
-                                <!-- TradingView Widget END -->
+                                }
+                                
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    // Delay chart creation to allow TradingView to load
+                                    setTimeout(() => {
+                                        createTradingViewWidget();
+                                    }, 1000);
+                                });
+                                </script>
                             </div>
                         </div>
-                        
-                        <div class="stock-details-container">
-                            <div class="stock-info">
-                                <div>
-                                    <div class="stock-header">
-                                        <h3 id="stock-name" class="stock-name">Tesla, Inc. (TSLA)</h3>
-                                    </div>
-                                    <div id="stock-price" class="stock-price">Loading...</div>
-                                    <div id="stock-change" class="stock-change">
-                                        <i class="fas fa-spinner fa-spin"></i>
-                                        <span class="stock-change-value">Fetching data...</span>
-                                    </div>
+                    </div>
+                    
+                    <div class="stock-details-container">
+                        <div class="stock-info">
+                            <div class="stock-header">
+                                <h3 id="stock-name" class="stock-name">Tesla, Inc. (TSLA)</h3>
+                            </div>
+                            <div id="stock-price" class="stock-price">$248.50</div>
+                            <div id="stock-change" class="stock-change">
+                                <i class="fas fa-arrow-up"></i>
+                                <span class="stock-change-value stock-change-positive">+$3.25 (1.32%)</span>
+                            </div>
+                            
+                            <div class="stock-metrics">
+                                <div class="stock-metric">
+                                    <div class="stock-metric-label">Market Cap</div>
+                                    <div id="market-cap" class="stock-metric-value">$789.5B</div>
                                 </div>
-                                
-                                <div class="stock-metrics">
-                                    <div class="stock-metric">
-                                        <div class="stock-metric-label">Market Cap</div>
-                                        <div id="market-cap" class="stock-metric-value">Loading...</div>
-                                    </div>
-                                    <div class="stock-metric">
-                                        <div class="stock-metric-label">P/E Ratio</div>
-                                        <div id="pe-ratio" class="stock-metric-value">Loading...</div>
-                                    </div>
-                                    <div class="stock-metric">
-                                        <div class="stock-metric-label">52-Week High</div>
-                                        <div id="year-high" class="stock-metric-value">Loading...</div>
-                                    </div>
-                                    <div class="stock-metric">
-                                        <div class="stock-metric-label">52-Week Low</div>
-                                        <div id="year-low" class="stock-metric-value">Loading...</div>
-                                    </div>
+                                <div class="stock-metric">
+                                    <div class="stock-metric-label">P/E Ratio</div>
+                                    <div id="pe-ratio" class="stock-metric-value">68.42</div>
                                 </div>
-                                
-                                <!-- Stock data fetching script -->
-                                <script>
-                                    // Stock data mapping (in a real app, this would come from an API)
-                                    const stockDatabase = {
-                                        'TSLA': {
-                                            name: 'Tesla, Inc.',
-                                            price: 248.50,
-                                            change: 3.25,
-                                            changePercent: 1.32,
-                                            marketCap: "789.5B",
-                                            peRatio: 68.42,
-                                            yearHigh: 299.29,
-                                            yearLow: 138.80
-                                        },
-                                        'AAPL': {
-                                            name: 'Apple Inc.',
-                                            price: 187.32,
-                                            change: 1.45,
-                                            changePercent: 0.78,
-                                            marketCap: "2.94T",
-                                            peRatio: 30.85,
-                                            yearHigh: 198.23,
-                                            yearLow: 124.17
-                                        },
-                                        'MSFT': {
-                                            name: 'Microsoft Corporation',
-                                            price: 378.92,
-                                            change: -2.34,
-                                            changePercent: -0.61,
-                                            marketCap: "2.82T",
-                                            peRatio: 36.79,
-                                            yearHigh: 384.30,
-                                            yearLow: 219.35
-                                        },
-                                        'AMZN': {
-                                            name: 'Amazon.com, Inc.',
-                                            price: 142.83,
-                                            change: 0.95,
-                                            changePercent: 0.67,
-                                            marketCap: "1.47T",
-                                            peRatio: 111.58,
-                                            yearHigh: 145.86,
-                                            yearLow: 81.43
-                                        },
-                                        'GOOGL': {
-                                            name: 'Alphabet Inc.',
-                                            price: 139.10,
-                                            change: -0.87,
-                                            changePercent: -0.62,
-                                            marketCap: "1.75T",
-                                            peRatio: 26.74,
-                                            yearHigh: 142.38,
-                                            yearLow: 84.86
-                                        }
-                                    };
-                                    
-                                    // Function to update stock info
-                                    function updateStockInfo(symbol) {
-                                        // Default to TSLA if symbol not in our database
-                                        const stockSymbol = symbol.toUpperCase();
-                                        const stockData = stockDatabase[stockSymbol] || stockDatabase['TSLA'];
-                                        
-                                        // Update stock name
-                                        document.getElementById('stock-name').textContent = `${stockData.name} (${stockSymbol})`;
-                                        
-                                        // Update stock price
-                                        document.getElementById('stock-price').textContent = '$' + stockData.price.toFixed(2);
-                                        
-                                        // Update stock change
-                                        const changeElement = document.getElementById('stock-change');
-                                        if (stockData.change >= 0) {
-                                            changeElement.innerHTML = `
-                                                <i class="fas fa-arrow-up"></i>
-                                                <span class="stock-change-value stock-change-positive">+${stockData.change.toFixed(2)} (${stockData.changePercent.toFixed(2)}%)</span>
-                                            `;
-                                        } else {
-                                            changeElement.innerHTML = `
-                                                <i class="fas fa-arrow-down"></i>
-                                                <span class="stock-change-value stock-change-negative">${stockData.change.toFixed(2)} (${stockData.changePercent.toFixed(2)}%)</span>
-                                            `;
-                                        }
-                                        
-                                        // Update metrics
-                                        document.getElementById('market-cap').textContent = '$' + stockData.marketCap;
-                                        document.getElementById('pe-ratio').textContent = stockData.peRatio.toFixed(2);
-                                        document.getElementById('year-high').textContent = '$' + stockData.yearHigh.toFixed(2);
-                                        document.getElementById('year-low').textContent = '$' + stockData.yearLow.toFixed(2);
-                                    }
-                                    
-                                    // Initialize with Tesla
-                                    document.addEventListener('DOMContentLoaded', function() {
-                                        updateStockInfo('TSLA');
-                                    });
-                                </script>
-                                
-                                <div class="stock-chat">
-                                    <h4 class="chat-header">Ask about this stock</h4>
-                                    <div class="chat-container" id="stock-chat-messages">
-                                        <div class="chat-message">
-                                            <strong>AI Assistant:</strong> I can help you understand this stock chart and metrics. What would you like to know about Tesla (TSLA)?
+                                <div class="stock-metric">
+                                    <div class="stock-metric-label">52-Week High</div>
+                                    <div id="year-high" class="stock-metric-value">$299.29</div>
+                                </div>
+                                <div class="stock-metric">
+                                    <div class="stock-metric-label">52-Week Low</div>
+                                    <div id="year-low" class="stock-metric-value">$138.80</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Enhanced AI Chat Section -->
+                            <div class="ai-chat-section">
+                                <h4 class="chat-header">
+                                    <i class="fas fa-robot"></i> 
+                                    AI Investment Assistant
+                                </h4>
+                                <div id="message-alerts"></div>
+                                <div class="chat-container" id="stock-chat-messages">
+                                    <div class="chat-message ai-message">
+                                        <div class="message-role">AI Assistant</div>
+                                        <div class="message-content">
+                                            Hello! I'm your AI investment assistant powered by Google's Gemini. I can help you understand Tesla (TSLA) and other stocks, explain financial concepts, and provide market insights. Configure your API key above to get started, then ask me anything!
                                         </div>
                                     </div>
-                                    <div class="chat-input-container">
-                                        <input type="text" class="chat-input" id="stock-chat-input" placeholder="Ask a question about this stock...">
-                                        <button class="chat-send" id="stock-chat-send">
-                                            <i class="fas fa-paper-plane"></i>
-                                        </button>
-                                    </div>
                                 </div>
-                                
-                                <!-- Improved chat functionality -->
-                                <script>
-                                    document.addEventListener('DOMContentLoaded', function() {
-                                        const chatInput = document.getElementById('stock-chat-input');
-                                        const chatSend = document.getElementById('stock-chat-send');
-                                        const chatMessages = document.getElementById('stock-chat-messages');
-                                        
-                                        // Track conversation context
-                                        let currentStock = 'TSLA';
-                                        let conversationHistory = [];
-                                        
-                                        chatSend.addEventListener('click', function() {
-                                            const message = chatInput.value.trim();
-                                            
-                                            if (message) {
-                                                // Get current stock symbol from the stock name header
-                                                const stockNameText = document.getElementById('stock-name').textContent;
-                                                currentStock = stockNameText.match(/\(([^)]+)\)/)[1];
-                                                
-                                                // Add user message
-                                                const userMessage = document.createElement('div');
-                                                userMessage.className = 'chat-message';
-                                                userMessage.innerHTML = `<strong>You:</strong> ${message}`;
-                                                chatMessages.appendChild(userMessage);
-                                                
-                                                // Add to conversation history
-                                                conversationHistory.push({
-                                                    role: 'user',
-                                                    content: message
-                                                });
-                                                
-                                                // Clear input
-                                                chatInput.value = '';
-                                                
-                                                // Scroll to bottom
-                                                chatMessages.scrollTop = chatMessages.scrollHeight;
-                                                
-                                                // Generate response based on question and context
-                                                generateResponse(message, currentStock);
-                                            }
-                                        });
-                                        
-                                        // Allow Enter key to send message
-                                        chatInput.addEventListener('keypress', function(e) {
-                                            if (e.key === 'Enter') {
-                                                chatSend.click();
-                                            }
-                                        });
-                                        
-                                        function generateResponse(question, stockSymbol) {
-                                            // Show typing indicator
-                                            const typingIndicator = document.createElement('div');
-                                            typingIndicator.className = 'chat-message typing-indicator';
-                                            typingIndicator.innerHTML = `<strong>AI Assistant:</strong> <em>Typing...</em>`;
-                                            chatMessages.appendChild(typingIndicator);
-                                            
-                                            // Scroll to bottom
-                                            chatMessages.scrollTop = chatMessages.scrollHeight;
-                                            
-                                            // Get stock data
-                                            const stockData = stockDatabase[stockSymbol] || stockDatabase['TSLA'];
-                                            
-                                            // Simulate thinking time
-                                            setTimeout(() => {
-                                                // Remove typing indicator
-                                                chatMessages.removeChild(typingIndicator);
-                                                
-                                                // Generate response based on question keywords
-                                                let response = '';
-                                                const lowerQuestion = question.toLowerCase();
-                                                
-                                                if (lowerQuestion.includes('what is') && lowerQuestion.includes('p/e') || 
-                                                    lowerQuestion.includes('pe ratio') || 
-                                                    lowerQuestion.includes('price to earnings')) {
-                                                    response = `${stockSymbol}'s P/E ratio is ${stockData.peRatio}. The Price-to-Earnings ratio compares a company's share price to its earnings per share. A high P/E ratio could mean investors expect high growth in the future, while a low P/E might indicate the stock is undervalued or the company is facing challenges.`;
-                                                } 
-                                                else if (lowerQuestion.includes('market cap') || lowerQuestion.includes('how big') || lowerQuestion.includes('company size')) {
-                                                    response = `${stockSymbol}'s market capitalization is $${stockData.marketCap}, making it one of the largest companies in its sector. Market cap represents the total value of a company's outstanding shares and is calculated by multiplying the current share price by the total number of shares.`;
-                                                }
-                                                else if (lowerQuestion.includes('52') || lowerQuestion.includes('year high') || lowerQuestion.includes('year low') || lowerQuestion.includes('range')) {
-                                                    response = `Over the past 52 weeks, ${stockSymbol}'s stock price has ranged from a low of $${stockData.yearLow} to a high of $${stockData.yearHigh}. The current price of $${stockData.price.toFixed(2)} is ${stockData.price > (stockData.yearHigh + stockData.yearLow)/2 ? 'closer to the high end' : 'closer to the low end'} of this range.`;
-                                                }
-                                                else if (lowerQuestion.includes('buy') || lowerQuestion.includes('sell') || lowerQuestion.includes('invest') || lowerQuestion.includes('good investment')) {
-                                                    response = `I can't provide specific investment advice on whether to buy or sell ${stockSymbol} stock. Investment decisions should be based on your financial goals, risk tolerance, and thorough research. Consider consulting with a financial advisor for personalized recommendations.`;
-                                                }
-                                                else if (lowerQuestion.includes('trend') || lowerQuestion.includes('moving') || lowerQuestion.includes('direction')) {
-                                                    const trend = stockData.change >= 0 ? 'upward' : 'downward';
-                                                    response = `${stockSymbol} is currently showing a ${trend} trend with a ${stockData.change >= 0 ? 'gain' : 'loss'} of ${Math.abs(stockData.changePercent).toFixed(2)}% today. To analyze longer-term trends, you might want to look at moving averages and other technical indicators on the chart.`;
-                                                }
-                                                else if (lowerQuestion.includes('dividend') || lowerQuestion.includes('dividends') || lowerQuestion.includes('yield')) {
-                                                    if (stockSymbol === 'AAPL' || stockSymbol === 'MSFT') {
-                                                        response = `${stockSymbol} does pay dividends to its shareholders. Always check the company's investor relations page for the most current dividend information and payout schedule.`;
-                                                    } else {
-                                                        response = `${stockSymbol} currently does not pay dividends to shareholders. The company may be reinvesting profits into growth initiatives instead of distributing them as dividends.`;
-                                                    }
-                                                }
-                                                else if (lowerQuestion.includes('compare') || lowerQuestion.includes('vs') || lowerQuestion.includes('versus')) {
-                                                    response = `To compare ${stockSymbol} with other stocks, you can look at metrics like P/E ratio (${stockSymbol}'s is ${stockData.peRatio}), market cap ($${stockData.marketCap}), revenue growth, and profit margins. You can also add multiple symbols to the chart by clicking on "Compare" in the TradingView widget.`;
-                                                }
-                                                else {
-                                                    // Generic response for other questions
-                                                    response = `That's an interesting question about ${stockSymbol}. When analyzing stocks, it's important to consider both fundamental factors (like revenue growth, profitability, and competitive position) and technical factors (like price trends and trading volume). Is there a specific aspect of ${stockSymbol} you'd like to know more about?`;
-                                                }
-                                                
-                                                // Add AI response
-                                                const aiMessage = document.createElement('div');
-                                                aiMessage.className = 'chat-message';
-                                                aiMessage.innerHTML = `<strong>AI Assistant:</strong> ${response}`;
-                                                chatMessages.appendChild(aiMessage);
-                                                
-                                                // Add to conversation history
-                                                conversationHistory.push({
-                                                    role: 'assistant',
-                                                    content: response
-                                                });
-                                                
-                                                // Scroll to bottom
-                                                chatMessages.scrollTop = chatMessages.scrollHeight;
-                                            }, 1000);
-                                        }
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- College Guide Tab -->
-                <div class="tab-content" id="college-guide">
-                    <div class="student-resources-container">
-                        <div class="student-resources-header">
-                            <i class="fas fa-graduation-cap"></i>
-                            <h2 class="student-resources-title">College Student Investment Guide</h2>
-                        </div>
-                        <p class="student-resources-subtitle">Smart financial moves to set yourself up for success, even on a tight budget</p>
-                        
-                        <div class="resources-grid">
-                            <!-- Start with a High-Yield Savings Account -->
-                            <div class="resource-card">
-                                <div class="resource-icon icon-savings">
-                                    <i class="fas fa-piggy-bank"></i>
-                                </div>
-                                <h3 class="resource-title">Start with a High-Yield Savings Account</h3>
-                                <p class="resource-description">
-                                    Build your emergency fund first. Aim for $1,000-$2,500 as your initial goal.
-                                </p>
-                                <ul class="resource-tips">
-                                    <li class="resource-tip">
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Use automatic transfers</span>
-                                    </li>
-                                    <li class="resource-tip">
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Start with $25-50/month</span>
-                                    </li>
-                                    <li class="resource-tip">
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Keep it separate from spending money</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                            <!-- Learn Investment Basics -->
-                            <div class="resource-card">
-                                <div class="resource-icon icon-education">
-                                    <i class="fas fa-book"></i>
-                                </div>
-                                <h3 class="resource-title">Learn Investment Basics</h3>
-                                <p class="resource-description">
-                                    Understanding compound interest and dollar-cost averaging will serve you for life.
-                                </p>
-                                <ul class="resource-tips">
-                                    <li class="resource-tip">
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Read 'The Simple Path to Wealth'</span>
-                                    </li>
-                                    <li class="resource-tip">
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Follow reputable financial blogs</span>
-                                    </li>
-                                    <li class="resource-tip">
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Take a personal finance course</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                            <!-- Consider Low-Cost Index Funds -->
-                            <div class="resource-card">
-                                <div class="resource-icon icon-funds">
-                                    <i class="fas fa-chart-pie"></i>
-                                </div>
-                                <h3 class="resource-title">Consider Low-Cost Index Funds</h3>
-                                <p class="resource-description">
-                                    Once you have emergency savings, index funds are perfect for beginners.
-                                </p>
-                                <ul class="resource-tips">
-                                    <li class="resource-tip">
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Start with broad market ETFs</span>
-                                    </li>
-                                    <li class="resource-tip">
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Look for expense ratios under 0.20%</span>
-                                    </li>
-                                    <li class="resource-tip">
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Use dollar-cost averaging</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                            <!-- Take Advantage of Time -->
-                            <div class="resource-card">
-                                <div class="resource-icon icon-time">
-                                    <i class="fas fa-hourglass-half"></i>
-                                </div>
-                                <h3 class="resource-title">Take Advantage of Time</h3>
-                                <p class="resource-description">
-                                    You have the most valuable asset: time. Even small amounts grow significantly.
-                                </p>
-                                <ul class="resource-tips">
-                                    <li class="resource-tip">
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Invest consistently, not perfectly</span>
-                                    </li>
-                                    <li class="resource-tip">
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>$50/month can become $175,000 in 40 years</span>
-                                    </li>
-                                    <li class="resource-tip">
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Start now, increase later</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <div class="platforms-section">
-                            <h3 class="platforms-title">
-                                <i class="fas fa-users"></i> Student-Friendly Investment Platforms
-                            </h3>
-                            
-                            <div class="platform-list">
-                                <!-- Fidelity Youth Account -->
-                                <div class="platform-card">
-                                    <div class="platform-header">
-                                        <h4 class="platform-name">Fidelity Youth Account</h4>
-                                    </div>
-                                    <p class="platform-description">
-                                        No account minimums, commission-free trading, educational resources
-                                    </p>
-                                    <div class="platform-age">Age: 13-17 (with parent)</div>
-                                    <div class="platform-features">
-                                        <span class="platform-feature">$0 minimum</span>
-                                        <span class="platform-feature">Free stock trades</span>
-                                        <span class="platform-feature">Educational content</span>
-                                    </div>
-                                </div>
-                                
-                                <!-- Charles Schwab Student Checking -->
-                                <div class="platform-card">
-                                    <div class="platform-header">
-                                        <h4 class="platform-name">Charles Schwab Student Checking</h4>
-                                    </div>
-                                    <p class="platform-description">
-                                        No fees, no minimums, plus investment account options
-                                    </p>
-                                    <div class="platform-age">Age: 18+</div>
-                                    <div class="platform-features">
-                                        <span class="platform-feature">No monthly fees</span>
-                                        <span class="platform-feature">Schwab One brokerage</span>
-                                        <span class="platform-feature">ATM fee refunds</span>
-                                    </div>
-                                </div>
-                                
-                                <!-- Vanguard -->
-                                <div class="platform-card">
-                                    <div class="platform-header">
-                                        <h4 class="platform-name">Vanguard</h4>
-                                    </div>
-                                    <p class="platform-description">
-                                        Low-cost index funds, perfect for long-term investing
-                                    </p>
-                                    <div class="platform-age">Age: 18+</div>
-                                    <div class="platform-features">
-                                        <span class="platform-feature">$1 minimum ETFs</span>
-                                        <span class="platform-feature">Ultra-low fees</span>
-                                        <span class="platform-feature">Target-date funds</span>
-                                    </div>
+                                <div class="chat-input-container">
+                                    <textarea 
+                                        class="chat-input" 
+                                        id="stock-chat-input" 
+                                        placeholder="Ask about this stock, investment strategies, or financial concepts..."
+                                        rows="1"
+                                    ></textarea>
+                                    <button class="chat-send" id="stock-chat-send">
+                                        <i class="fas fa-paper-plane"></i>
+                                        Send
+                                    </button>
                                 </div>
                             </div>
-                            
-                            <div class="pro-tip">
-                                <div class="pro-tip-icon">
-                                    <i class="fas fa-lightbulb"></i>
-                                </div>
-                                <p class="pro-tip-text">
-                                    <strong>Pro Tip:</strong> Many brokerages offer educational resources specifically for students. Take advantage of webinars, articles, and simulators to learn before you invest real money.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">
-                <h2>FinancialFuture</h2>
-                <p>Your path to financial freedom</p>
-            </div>
-            <div class="footer-links">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#planner">Financial Planner</a></li>
-                    <li><a href="investment-knowledge.html">Investment Knowledge</a></li>
-                    <li><a href="index.html#about">About</a></li>
-                </ul>
-            </div>
-            <div class="footer-contact">
-                <h3>Contact Us</h3>
-                <p>Email: info@financialfuture.com</p>
-                <p>Phone: (555) 123-4567</p>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 FinancialFuture. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Investment Detail Modal -->
-    <div class="investment-detail-modal" id="investment-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">
-                    <div class="investment-icon icon-hysa">
-                        <i class="fas fa-piggy-bank"></i>
-                    </div>
-                    <span>High-Yield Savings Account</span>
-                </h3>
-                <button class="modal-close" id="modal-close">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p>A savings account that offers significantly higher interest rates than traditional savings accounts, typically 10-25x higher than national averages.</p>
-                
-                <div class="modal-metrics">
-                    <div class="modal-metric return">
-                        <div class="modal-metric-label">Expected Return</div>
-                        <div class="modal-metric-value">4.0% - 5.0% APY</div>
-                    </div>
-                    <div class="modal-metric investment">
-                        <div class="modal-metric-label">Minimum Investment</div>
-                        <div class="modal-metric-value">$0 - $100</div>
-                    </div>
-                    <div class="modal-metric liquidity">
-                        <div class="modal-metric-label">Liquidity</div>
-                        <div class="modal-metric-value">High</div>
-                    </div>
-                </div>
-                
-                <div class="modal-section">
-                    <h4 class="modal-section-title">Best For:</h4>
-                    <div class="best-for-tags">
-                        <span class="best-for-tag">Emergency funds</span>
-                        <span class="best-for-tag">Short-term goals</span>
-                        <span class="best-for-tag">Risk-averse savers</span>
-                        <span class="best-for-tag">Beginners</span>
-                    </div>
-                </div>
-                
-                <div class="modal-section">
-                    <div class="pros-cons">
-                        <div class="pros">
-                            <h4 class="pros-title">
-                                <i class="fas fa-check-circle"></i> Advantages
-                            </h4>
-                            <ul class="pros-cons-list">
-                                <li class="pros-cons-item">
-                                    <i class="fas fa-check"></i>
-                                    <span>FDIC insured up to $250,000</span>
-                                </li>
-                                <li class="pros-cons-item">
-                                    <i class="fas fa-check"></i>
-                                    <span>No risk of principal loss</span>
-                                </li>
-                                <li class="pros-cons-item">
-                                    <i class="fas fa-check"></i>
-                                    <span>High liquidity</span>
-                                </li>
-                                <li class="pros-cons-item">
-                                    <i class="fas fa-check"></i>
-                                    <span>Competitive interest rates</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="cons">
-                            <h4 class="cons-title">
-                                <i class="fas fa-exclamation-triangle"></i> Considerations
-                            </h4>
-                            <ul class="pros-cons-list">
-                                <li class="pros-cons-item">
-                                    <i class="fas fa-exclamation"></i>
-                                    <span>Returns may not beat inflation long-term</span>
-                                </li>
-                                <li class="pros-cons-item">
-                                    <i class="fas fa-exclamation"></i>
-                                    <span>Rates can change</span>
-                                </li>
-                                <li class="pros-cons-item">
-                                    <i class="fas fa-exclamation"></i>
-                                    <span>Limited growth potential</span>
-                                </li>
-                                <li class="pros-cons-item">
-                                    <i class="fas fa-exclamation"></i>
-                                    <span>May have monthly deposit limits</span>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-                <div class="tab-content" id="instagram-reels">
-                    <div class="instagram-reels-container">
-                        <div class="reels-header">
-                            <i class="fab fa-instagram"></i>
-                            <h2 class="reels-title">Investment Tips from Instagram</h2>
-                        </div>
-                        <p class="reels-description">Learn from financial experts through these curated Instagram reels about investing, saving, and building wealth.</p>
-                        
-                        <div class="reels-grid">
-                            <!-- Investment Strategy Reels -->
-                            <div class="reels-category">
-                                <h3><i class="fas fa-chess"></i> Investment Strategies</h3>
-                                <div class="reels-list">
-                                    <div class="reel-card">
-                                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/C1KhzHJrQAk/" data-instgrm-version="14"></blockquote>
-                                    </div>
-                                    <div class="reel-card">
-                                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/C5Ql_BPLlHD/" data-instgrm-version="14"></blockquote>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Stock Market Tips Reels -->
-                            <div class="reels-category">
-                                <h3><i class="fas fa-chart-line"></i> Stock Market Tips</h3>
-                                <div class="reels-list">
-                                    <div class="reel-card">
-                                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/C5Ql_BPLlHD/" data-instgrm-version="14"></blockquote>
-                                    </div>
-                                    <div class="reel-card">
-                                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/C4-4IYSL_Hs/" data-instgrm-version="14"></blockquote>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Retirement Planning Reels -->
-                            <div class="reels-category">
-                                <h3><i class="fas fa-umbrella-beach"></i> Retirement Planning</h3>
-                                <div class="reels-list">
-                                    <div class="reel-card">
-                                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/C5NXGgKL-Hs/" data-instgrm-version="14"></blockquote>
-                                    </div>
-                                    <div class="reel-card">
-                                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/C5Ql_BPLlHD/" data-instgrm-version="14"></blockquote>
-                                    </div>
-                                </div>
+
+    <script>
+        class GeminiAI {
+            constructor() {
+                this.apiKey = localStorage.getItem('gemini_api_key') || '';
+                this.baseUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent';
+                this.conversationHistory = [];
+                this.currentStock = 'TSLA';
+                this.initializeUI();
+                this.setupEventListeners();
+            }
+
+            initializeUI() {
+                const apiKeyInput = document.getElementById('api-key-input');
+                const apiStatus = document.getElementById('api-status');
+                
+                if (this.apiKey) {
+                    apiKeyInput.value = this.apiKey;
+                    this.updateApiStatus('ready', 'Ready');
+                }
+
+                // Stock data for context
+                this.stockDatabase = {
+                    'TSLA': {
+                        name: 'Tesla, Inc.',
+                        price: 248.50,
+                        change: 3.25,
+                        changePercent: 1.32,
+                        marketCap: "789.5B",
+                        peRatio: 68.42,
+                        yearHigh: 299.29,
+                        yearLow: 138.80,
+                        sector: 'Electric Vehicles',
+                        description: 'Tesla designs, develops, manufactures, and sells electric vehicles and energy storage systems.'
+                    },
+                    'AAPL': {
+                        name: 'Apple Inc.',
+                        price: 187.32,
+                        change: 1.45,
+                        changePercent: 0.78,
+                        marketCap: "2.94T",
+                        peRatio: 30.85,
+                        yearHigh: 198.23,
+                        yearLow: 124.17,
+                        sector: 'Technology',
+                        description: 'Apple Inc. designs, manufactures, and markets consumer electronics, software, and services.'
+                    },
+                    'MSFT': {
+                        name: 'Microsoft Corporation',
+                        price: 378.92,
+                        change: -2.34,
+                        changePercent: -0.61,
+                        marketCap: "2.82T",
+                        peRatio: 36.79,
+                        yearHigh: 384.30,
+                        yearLow: 219.35,
+                        sector: 'Technology',
+                        description: 'Microsoft Corporation develops and supports software, services, devices and solutions worldwide.'
+                    },
+                    'AMZN': {
+                        name: 'Amazon.com, Inc.',
+                        price: 142.83,
+                        change: 0.95,
+                        changePercent: 0.67,
+                        marketCap: "1.47T",
+                        peRatio: 111.58,
+                        yearHigh: 145.86,
+                        yearLow: 81.43,
+                        sector: 'E-commerce',
+                        description: 'Amazon.com, Inc. engages in the retail sale of consumer products and subscriptions through online and physical stores.'
+                    },
+                    'GOOGL': {
+                        name: 'Alphabet Inc.',
+                        price: 139.10,
+                        change: -0.87,
+                        changePercent: -0.62,
+                        marketCap: "1.75T",
+                        peRatio: 26.74,
+                        yearHigh: 142.38,
+                        yearLow: 84.86,
+                        sector: 'Technology',
+                        description: 'Alphabet Inc. provides online advertising services and cloud-based solutions.'
+                    }
+                };
+            }
+
+            setupEventListeners() {
+                // API Key configuration
+                const apiKeyInput = document.getElementById('api-key-input');
+                apiKeyInput.addEventListener('blur', () => {
+                    this.setApiKey(apiKeyInput.value.trim());
+                });
+
+                apiKeyInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        this.setApiKey(apiKeyInput.value.trim());
+                    }
+                });
+
+                // Chat functionality
+                const chatSend = document.getElementById('stock-chat-send');
+                const chatInput = document.getElementById('stock-chat-input');
+                
+                chatSend.addEventListener('click', () => {
+                    this.handleSendMessage();
+                });
+
+                chatInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        this.handleSendMessage();
+                    }
+                });
+
+                // Auto-resize textarea
+                chatInput.addEventListener('input', () => {
+                    chatInput.style.height = 'auto';
+                    chatInput.style.height = Math.min(chatInput.scrollHeight, 120) + 'px';
+                });
+
+                // Stock selection
+                document.querySelectorAll('.stock-chip').forEach(chip => {
+                    chip.addEventListener('click', () => {
+                        const symbol = chip.getAttribute('data-symbol');
+                        this.updateStock(symbol);
+                    });
+                });
+
+                const searchBtn = document.getElementById('stock-search-btn');
+                const symbolInput = document.getElementById('stock-symbol-input');
+                
+                searchBtn.addEventListener('click', () => {
+                    const symbol = symbolInput.value.trim().toUpperCase();
+                    if (symbol) {
+                        this.updateStock(symbol);
+                    }
+                });
+
+                symbolInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        searchBtn.click();
+                    }
+                });
+            }
+
+            setApiKey(key) {
+                this.apiKey = key;
+                if (key) {
+                    localStorage.setItem('gemini_api_key', key);
+                    this.updateApiStatus('ready', 'Ready');
+                } else {
+                    localStorage.removeItem('gemini_api_key');
+                    this.updateApiStatus('error', 'Not configured');
+                }
+            }
+
+            updateApiStatus(status, text) {
+                const apiStatus = document.getElementById('api-status');
+                apiStatus.className = `api-status ${status}`;
+                apiStatus.textContent = text;
+            }
+
+            updateStock(symbol) {
+                this.currentStock = symbol.toUpperCase();
+                const stockData = this.stockDatabase[this.currentStock] || this.stockDatabase['TSLA'];
+                
+                // Update UI
+                document.getElementById('stock-name').textContent = `${stockData.name} (${this.currentStock})`;
+                document.getElementById('stock-price').textContent = `$${stockData.price.toFixed(2)}`;
+                
+                const changeElement = document.getElementById('stock-change');
+                const changeClass = stockData.change >= 0 ? 'stock-change-positive' : 'stock-change-negative';
+                const changeIcon = stockData.change >= 0 ? 'fa-arrow-up' : 'fa-arrow-down';
+                const changeSign = stockData.change >= 0 ? '+' : '';
+                
+                changeElement.innerHTML = `
+                    <i class="fas ${changeIcon}"></i>
+                    <span class="stock-change-value ${changeClass}">${changeSign}$${stockData.change.toFixed(2)} (${stockData.changePercent.toFixed(2)}%)</span>
+                `;
+                
+                document.getElementById('market-cap').textContent = `$${stockData.marketCap}`;
+                document.getElementById('pe-ratio').textContent = stockData.peRatio.toFixed(2);
+                document.getElementById('year-high').textContent = `$${stockData.yearHigh.toFixed(2)}`;
+                document.getElementById('year-low').textContent = `$${stockData.yearLow.toFixed(2)}`;
+
+                // Update chart
+                if (window.createTradingViewWidget) {
+                    let formattedSymbol = this.currentStock;
+                    if (!this.currentStock.includes(':')) {
+                        formattedSymbol = "NASDAQ:" + this.currentStock;
+                    }
+                    createTradingViewWidget(formattedSymbol);
+                }
+
+                // Reset conversation with new stock context
+                this.conversationHistory = [];
+                this.addMessage('ai', `I've updated to show information for ${stockData.name} (${this.currentStock}). Current price is ${stockData.price.toFixed(2)}. How can I help you analyze this stock?`);
+            }
+
+            async handleSendMessage() {
+                const chatInput = document.getElementById('stock-chat-input');
+                const chatSend = document.getElementById('stock-chat-send');
+                const message = chatInput.value.trim();
+
+                if (!message) return;
+
+                if (!this.apiKey) {
+                    this.showAlert('error', 'Please configure your Gemini API key first.');
+                    return;
+                }
+
+                // Disable input while processing
+                chatInput.value = '';
+                chatSend.disabled = true;
+                chatInput.disabled = true;
+
+                // Add user message to chat
+                this.addMessage('user', message);
+
+                // Show typing indicator
+                this.showTypingIndicator();
+
+                try {
+                    const response = await this.sendToGemini(message);
+                    this.hideTypingIndicator();
+                    this.addMessage('ai', response);
+                } catch (error) {
+                    this.hideTypingIndicator();
+                    this.addMessage('ai', 'I apologize, but I encountered an error processing your request. Please check your API key and try again.');
+                    this.showAlert('error', `Error: ${error.message}`);
+                    console.error('Gemini API Error:', error);
+                } finally {
+                    // Re-enable input
+                    chatSend.disabled = false;
+                    chatInput.disabled = false;
+                    chatInput.focus();
+                }
+            }
+
+            async sendToGemini(userMessage) {
+                const stockData = this.stockDatabase[this.currentStock] || this.stockDatabase['TSLA'];
+                
+                // Build context for the AI
+                const systemContext = `You are a knowledgeable financial advisor and investment assistant. You're currently discussing ${stockData.name} (${this.currentStock}).
+
+Current stock data:
+- Company: ${stockData.name}
+- Symbol: ${this.currentStock}
+- Current Price: ${stockData.price}
+- Change: ${stockData.change >= 0 ? '+' : ''}${stockData.change} (${stockData.changePercent}%)
+- Market Cap: ${stockData.marketCap}
+- P/E Ratio: ${stockData.peRatio}
+- 52-Week High: ${stockData.yearHigh}
+- 52-Week Low: ${stockData.yearLow}
+- Sector: ${stockData.sector}
+- Description: ${stockData.description}
+
+Please provide helpful, accurate investment insights while being clear that this is educational information and not personal financial advice. Be conversational but professional.`;
+
+                // Prepare conversation history for context
+                let conversationContext = systemContext + "\n\nConversation history:\n";
+                this.conversationHistory.slice(-6).forEach(msg => {
+                    conversationContext += `${msg.role === 'user' ? 'User' : 'Assistant'}: ${msg.content}\n`;
+                });
+                conversationContext += `User: ${userMessage}\nAssistant: `;
+
+                const requestBody = {
+                    contents: [{
+                        parts: [{
+                            text: conversationContext
+                        }]
+                    }],
+                    generationConfig: {
+                        temperature: 0.7,
+                        topK: 32,
+                        topP: 0.8,
+                        maxOutputTokens: 1000,
+                    }
+                };
+
+                const response = await fetch(`${this.baseUrl}?key=${this.apiKey}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(requestBody)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({}));
+                    throw new Error(errorData.error?.message || `HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                
+                if (!data.candidates || !data.candidates[0] || !data.candidates[0].content) {
+                    throw new Error('Invalid response format from Gemini API');
+                }
+
+                const aiResponse = data.candidates[0].content.parts[0].text;
+                
+                // Store in conversation history
+                this.conversationHistory.push(
+                    { role: 'user', content: userMessage },
+                    { role: 'ai', content: aiResponse }
+                );
+
+                // Keep conversation history manageable
+                if (this.conversationHistory.length > 20) {
+                    this.conversationHistory = this.conversationHistory.slice(-16);
+                }
+
+                return aiResponse;
+            }
+
+            addMessage(role, content) {
+                const chatContainer = document.getElementById('stock-chat-messages');
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `chat-message ${role}-message`;
+
+                const roleDiv = document.createElement('div');
+                roleDiv.className = 'message-role';
+                roleDiv.textContent = role === 'user' ? 'You' : 'AI Assistant';
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'message-content';
+                
+                // Simple markdown-like formatting
+                let formattedContent = content
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                    .replace(/`(.*?)`/g, '<code>$1</code>')
+                    .replace(/\n/g, '<br>');
+
+                contentDiv.innerHTML = formattedContent;
+
+                messageDiv.appendChild(roleDiv);
+                messageDiv.appendChild(contentDiv);
+                chatContainer.appendChild(messageDiv);
+
+                // Scroll to bottom
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }
+
+            showTypingIndicator() {
+                const chatContainer = document.getElementById('stock-chat-messages');
+                const typingDiv = document.createElement('div');
+                typingDiv.className = 'chat-message ai-message';
+                typingDiv.id = 'typing-indicator';
+
+                typingDiv.innerHTML = `
+                    <div class="message-role">AI Assistant</div>
+                    <div class="message-content">
+                        <div class="typing-indicator">
+                            <span>Thinking</span>
+                            <div class="typing-dots">
+                                <div class="typing-dot"></div>
+                                <div class="typing-dot"></div>
+                                <div class="typing-dot"></div>
                             </div>
                         </div>
                     </div>
-                </div>
+                `;
 
-
-    <script>
-        // Tab switching functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabs = document.querySelectorAll('.hub-tab');
-            const tabContents = document.querySelectorAll('.tab-content');
-            
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    // Remove active class from all tabs and contents
-                    tabs.forEach(t => t.classList.remove('active'));
-                    tabContents.forEach(c => c.classList.remove('active'));
-                    
-                    // Add active class to clicked tab
-                    tab.classList.add('active');
-                    
-                    // Show corresponding content
-                    const tabId = tab.getAttribute('data-tab');
-                    document.getElementById(tabId).classList.add('active');
-                });
-            });
-            
-            // Investment card click handler
-            const investmentCards = document.querySelectorAll('.investment-card');
-            const modal = document.getElementById('investment-modal');
-            const modalClose = document.getElementById('modal-close');
-            
-            investmentCards.forEach(card => {
-                card.addEventListener('click', () => {
-                    modal.style.display = 'flex';
-                    
-                    // In a real implementation, we would update the modal content based on the clicked card
-                    // For this example, we'll just show the pre-populated modal
-                });
-            });
-            
-            modalClose.addEventListener('click', () => {
-                modal.style.display = 'none';
-            });
-            
-            // Close modal when clicking outside
-            window.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.style.display = 'none';
-                }
-            });
-            
-            // Compound interest calculator
-            const initialInvestment = document.getElementById('initial-investment');
-            const monthlyContribution = document.getElementById('monthly-contribution');
-            const annualReturn = document.getElementById('annual-return');
-            const timePeriod = document.getElementById('time-period');
-            const returnRateValue = document.getElementById('return-rate-value');
-            const timePeriodValue = document.getElementById('time-period-value');
-            const finalAmount = document.getElementById('final-amount');
-            const totalContributions = document.getElementById('total-contributions');
-            const interestEarned = document.getElementById('interest-earned');
-            
-            function calculateCompoundInterest() {
-                const principal = parseFloat(initialInvestment.value);
-                const monthly = parseFloat(monthlyContribution.value);
-                const rate = parseFloat(annualReturn.value) / 100;
-                const years = parseFloat(timePeriod.value);
-                const months = years * 12;
-                
-                // Update display values
-                returnRateValue.textContent = annualReturn.value + '%';
-                timePeriodValue.textContent = timePeriod.value + ' years';
-                
-                // Calculate compound interest with monthly contributions
-                const monthlyRate = rate / 12;
-                let total = principal;
-                
-                for (let i = 0; i < months; i++) {
-                    total = (total + monthly) * (1 + monthlyRate);
-                }
-                
-                const totalContrib = principal + (monthly * months);
-                const interest = total - totalContrib;
-                
-                // Update results
-                finalAmount.textContent = '$' + total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-                totalContributions.textContent = '$' + totalContrib.toFixed(0).replace(/\d(?=(\d{3})+$)/g, '$&,');
-                interestEarned.textContent = '$' + interest.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+                chatContainer.appendChild(typingDiv);
+                chatContainer.scrollTop = chatContainer.scrollHeight;
             }
-            
-            // Add event listeners to inputs
-            initialInvestment.addEventListener('input', calculateCompoundInterest);
-            monthlyContribution.addEventListener('input', calculateCompoundInterest);
-            annualReturn.addEventListener('input', calculateCompoundInterest);
-            timePeriod.addEventListener('input', calculateCompoundInterest);
-            
-            // Stock chat functionality
-            const stockChatInput = document.getElementById('stock-chat-input');
-            const stockChatSend = document.getElementById('stock-chat-send');
-            const stockChatMessages = document.getElementById('stock-chat-messages');
-            
-            stockChatSend.addEventListener('click', () => {
-                const message = stockChatInput.value.trim();
-                
-                if (message) {
-                    // Add user message
-                    const userMessage = document.createElement('div');
-                    userMessage.className = 'chat-message';
-                    userMessage.innerHTML = `<strong>You:</strong> ${message}`;
-                    stockChatMessages.appendChild(userMessage);
-                    
-                    // Clear input
-                    stockChatInput.value = '';
-                    
-                    // Simulate AI response
-                    setTimeout(() => {
-                        const aiMessage = document.createElement('div');
-                        aiMessage.className = 'chat-message';
-                        
-                        // Simple response logic based on keywords
-                        let response = '';
-                        
-                        if (message.toLowerCase().includes('p/e') || message.toLowerCase().includes('pe ratio')) {
-                            response = "Tesla's P/E ratio of 68.42 is relatively high compared to the auto industry average, suggesting investors expect significant future growth. This metric represents the price per share divided by earnings per share.";
-                        } else if (message.toLowerCase().includes('market cap')) {
-                            response = "Tesla's market capitalization of $789.5 billion makes it one of the most valuable automakers in the world. Market cap is calculated by multiplying the current share price by the total number of outstanding shares.";
-                        } else if (message.toLowerCase().includes('buy') || message.toLowerCase().includes('sell') || message.toLowerCase().includes('invest')) {
-                            response = "I can't provide specific investment advice on whether to buy or sell Tesla stock. Consider your investment goals, risk tolerance, and consult with a financial advisor for personalized recommendations.";
-                        } else if (message.toLowerCase().includes('elon') || message.toLowerCase().includes('musk')) {
-                            response = "Elon Musk is the CEO of Tesla. Leadership changes and statements from key executives can significantly impact Tesla's stock price, so many investors follow his announcements closely.";
-                        } else if (message.toLowerCase().includes('electric') || message.toLowerCase().includes('ev') || message.toLowerCase().includes('car')) {
-                            response = "Tesla is a leading electric vehicle manufacturer. The EV market is expected to grow significantly in the coming years, with increasing competition from both traditional automakers and new entrants.";
-                        } else {
-                            response = "That's an interesting question about Tesla stock. When analyzing any stock, it's important to consider both fundamental metrics (like revenue growth, profitability, and debt levels) and broader market trends. Would you like to know about any specific aspect of Tesla's financial performance?";
-                        }
-                        
-                        aiMessage.innerHTML = `<strong>AI Assistant:</strong> ${response}`;
-                        stockChatMessages.appendChild(aiMessage);
-                        
-                        // Scroll to bottom
-                        stockChatMessages.scrollTop = stockChatMessages.scrollHeight;
-                    }, 1000);
-                    
-                    // Scroll to bottom
-                    stockChatMessages.scrollTop = stockChatMessages.scrollHeight;
+
+            hideTypingIndicator() {
+                const typingIndicator = document.getElementById('typing-indicator');
+                if (typingIndicator) {
+                    typingIndicator.remove();
                 }
+            }
+
+            showAlert(type, message) {
+                const alertContainer = document.getElementById('message-alerts');
+                const alertDiv = document.createElement('div');
+                alertDiv.className = `message-alert ${type}`;
+                alertDiv.innerHTML = `
+                    <i class="fas fa-${type === 'error' ? 'exclamation-triangle' : 'check-circle'}"></i>
+                    ${message}
+                `;
+
+                alertContainer.appendChild(alertDiv);
+
+                // Auto-remove after 5 seconds
+                setTimeout(() => {
+                    if (alertDiv.parentNode) {
+                        alertDiv.remove();
+                    }
+                }, 5000);
+            }
+
+            // Quick action methods for common queries
+            explainStock() {
+                const stockData = this.stockDatabase[this.currentStock] || this.stockDatabase['TSLA'];
+                const message = `Can you explain ${stockData.name} as an investment? What should I know about this company and its stock performance?`;
+                document.getElementById('stock-chat-input').value = message;
+                this.handleSendMessage();
+            }
+
+            analyzeFinancials() {
+                const stockData = this.stockDatabase[this.currentStock] || this.stockDatabase['TSLA'];
+                const message = `Can you analyze ${stockData.name}'s financial metrics? What do the P/E ratio of ${stockData.peRatio} and market cap of ${stockData.marketCap} tell us?`;
+                document.getElementById('stock-chat-input').value = message;
+                this.handleSendMessage();
+            }
+
+            discussRisks() {
+                const stockData = this.stockDatabase[this.currentStock] || this.stockDatabase['TSLA'];
+                const message = `What are the main risks and opportunities for investing in ${stockData.name} right now?`;
+                document.getElementById('stock-chat-input').value = message;
+                this.handleSendMessage();
+            }
+        }
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            const app = new GeminiAI();
+
+            // Add quick action buttons (optional enhancement)
+            const quickActionsDiv = document.createElement('div');
+            quickActionsDiv.className = 'quick-actions';
+            quickActionsDiv.style.cssText = `
+                display: flex;
+                gap: 0.5rem;
+                margin-bottom: 0.75rem;
+                flex-wrap: wrap;
+            `;
+
+            const quickActions = [
+                { text: 'Explain Stock', action: () => app.explainStock() },
+                { text: 'Analyze Financials', action: () => app.analyzeFinancials() },
+                { text: 'Discuss Risks', action: () => app.discussRisks() }
+            ];
+
+            quickActions.forEach(qa => {
+                const button = document.createElement('button');
+                button.textContent = qa.text;
+                button.className = 'stock-chip';
+                button.style.cssText = `
+                    padding: 0.375rem 0.75rem;
+                    font-size: 0.75rem;
+                    background: rgba(255, 255, 255, 0.2);
+                    border: 1px solid rgba(255, 255, 255, 0.3);
+                    color: white;
+                    border-radius: 9999px;
+                    cursor: pointer;
+                    transition: all 0.2s;
+                `;
+                button.addEventListener('click', qa.action);
+                button.addEventListener('mouseenter', () => {
+                    button.style.background = 'rgba(255, 255, 255, 0.3)';
+                });
+                button.addEventListener('mouseleave', () => {
+                    button.style.background = 'rgba(255, 255, 255, 0.2)';
+                });
+                quickActionsDiv.appendChild(button);
             });
+
+            // Insert quick actions before chat input
+            const chatInputContainer = document.querySelector('.chat-input-container');
+            chatInputContainer.parentNode.insertBefore(quickActionsDiv, chatInputContainer);
+
+            // Add sample questions for new users
+            const sampleQuestions = [
+                "What makes this stock a good or bad investment?",
+                "How does the P/E ratio compare to industry standards?",
+                "What are the key risks I should consider?",
+                "Explain the company's business model",
+                "What's driving the recent price changes?"
+            ];
+
+            // Add sample questions as a help section
+            const helpSection = document.createElement('div');
+            helpSection.innerHTML = `
+                <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(255, 255, 255, 0.05); border-radius: 0.5rem; border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <div style="font-weight: 600; margin-bottom: 0.5rem; font-size: 0.875rem;">💡 Try asking:</div>
+                    <div style="font-size: 0.8rem; opacity: 0.9; line-height: 1.4;">
+                        ${sampleQuestions.map(q => `• ${q}`).join('<br>')}
+                    </div>
+                </div>
+            `;
             
-            // Allow Enter key to send message
-            stockChatInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    stockChatSend.click();
-                }
-            });
-            
-            // Initialize calculator with default values
-            calculateCompoundInterest();
+            const aiChatSection = document.querySelector('.ai-chat-section');
+            aiChatSection.appendChild(helpSection);
+
+            // Initialize with Tesla and welcome message
+            app.updateStock('TSLA');
         });
     </script>
-<script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>
